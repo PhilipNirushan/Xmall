@@ -1,0 +1,22 @@
+{
+  "name": "xmall",
+  "version": "1.0.0",
+  "description": "XMall Web Application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PhilipNirushan/Xmall.git"
+  },
+  "author": "Philip Nirushan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PhilipNirushan/Xmall/issues"
+  },
+  "homepage": "https://github.com/PhilipNirushan/Xmall#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
