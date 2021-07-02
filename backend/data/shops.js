@@ -88,5 +88,5 @@ const shops = [
     },
   ]
   
-module.exports = shops
+export default shops
   
