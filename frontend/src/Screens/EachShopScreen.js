@@ -1,12 +1,24 @@
-import React from 'react'
+import React, {useState,useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Row, Col, Image } from 'react-bootstrap'
-import shops from '../shops'
+// import shops from '../shops'
 import Rating from '../Components/Rating'
+import axios from 'axios'
 
 const EachShopScreen = ({match}) => {
 
-    const shop = shops.find((s)=> s._id === match.params.id) 
+
+    const [shop,setShop] = useState({})
+
+    useEffect(()=>{
+        const fetchShop = async() => {
+            const { data } = await axios.get(`/api/shops/${match.params.id}`)
+            setShop(data)
+        }
+
+        fetchShop()
+
+    },[])
 
     return (
         <div>

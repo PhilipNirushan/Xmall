@@ -1,13 +1,8 @@
 import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom'
-// import 'bootstrap/dist/css/bootstrap.min.css' 
-// import ImageSlider from './Components/ImageSlider';
 import Header from './Components/Navbar/Header';
-// import AboutSection from './Screens/HomeScreen/AboutSection';
 import Footer from './Components/Footer/Footer';
 import RegisterScreen from './Screens/RegisterScreen';
-// import Rough from './Screens/HomeScreen/Rough';
-// import ProductScreen from './Screens/ProductScreen';
 import LoginScreen from './Screens/LoginScreen';
 import ShopScreen from './Screens/ShopScreen';
 import EachShopScreen from './Screens/EachShopScreen';
