@@ -25,7 +25,7 @@ const ShopScreen = () => {
             <Row>
                 {
                     shops.map((shop)=>(
-                        <Col lg={4} md={6} sm={12}>
+                        <Col key={shop._id} lg={4} md={6} sm={12}>
                             <Shop shop={shop}/>
                         </Col>
                     ))

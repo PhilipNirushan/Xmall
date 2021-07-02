@@ -18,7 +18,7 @@ const EachShopScreen = ({match}) => {
 
         fetchShop()
 
-    },[])
+    },[match])
 
     return (
         <div>
