@@ -1,13 +1,23 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { Container, Row, Col, Image, Card, Button } from 'react-bootstrap'
+import {
+  Container,
+  Row,
+  Col,
+  Image,
+  Card,
+  ListGroup,
+  Form,
+  Button,
+} from 'react-bootstrap'
 import { listEventDetails } from '../actions/eventActions'
 import Rating from '../Components/Rating'
 import Loader from '../Components/Loader'
 import Message from '../Components/Message'
 
-const EachEventScreen = ({ match }) => {
+const EachEventScreen = ({ history, match }) => {
+  const [qty, setQty] = useState(1)
   const dispatch = useDispatch()
   const eventDetails = useSelector(state => state.eventDetails)
   const { loading, error, event } = eventDetails
@@ -15,6 +25,10 @@ const EachEventScreen = ({ match }) => {
   useEffect(() => {
     dispatch(listEventDetails(match.params.id))
   }, [dispatch, match])
+
+  const addTOCartHandler = () => {
+    history.push(`/cart/${match.params.id}?qty=${qty}`)
+  }
 
   return (
     <Container className='my-3'>
@@ -44,23 +58,56 @@ const EachEventScreen = ({ match }) => {
                 </Card.Text>
                 <Card.Text as='div'>{event.description}</Card.Text>
                 <Card.Text as='div'>
-                  <Row>
-                    <Col>Price:</Col>
-                    <Col>{event.price}</Col>
-                  </Row>
+                  <ListGroup variant='flush'>
+                    <ListGroup.Item>
+                      <Row>
+                        <Col>Price:</Col>
+                        <Col>{event.price}</Col>
+                      </Row>
+                    </ListGroup.Item>
+                  </ListGroup>
                 </Card.Text>
                 <Card.Text as='div'>
-                  <Row>
-                    <Col>Status:</Col>
-                    <Col>
-                      {event.countInStock > 0 ? 'In Stock' : 'Out of Stock'}
-                    </Col>
-                  </Row>
+                  <ListGroup variant='flush'>
+                    <ListGroup.Item>
+                      <Row>
+                        <Col>Status:</Col>
+                        <Col>
+                          {event.countInStock > 0 ? 'In Stock' : 'Out of Stock'}
+                        </Col>
+                      </Row>
+                    </ListGroup.Item>
+                  </ListGroup>
                 </Card.Text>
+                {event.countInStock > 0 && (
+                  <Card.Text as='div'>
+                    <ListGroup variant='flush'>
+                      <ListGroup.Item>
+                        <Row>
+                          <Col>Qty</Col>
+                          <Col>
+                            <Form.Control
+                              as='select'
+                              value={qty}
+                              onChange={e => setQty(e.target.value)}
+                            >
+                              {[...Array(event.countInStock).keys()].map(x => (
+                                <option key={x + 1} value={x + 1}>
+                                  {x + 1}
+                                </option>
+                              ))}
+                            </Form.Control>
+                          </Col>
+                        </Row>
+                      </ListGroup.Item>
+                    </ListGroup>
+                  </Card.Text>
+                )}
                 <Card.Text as='div'>
                   <Row>
                     <Col>
                       <Button
+                        onClick={addTOCartHandler}
                         type='button'
                         className='btn1'
                         disabled={event.countInStock === 0}
