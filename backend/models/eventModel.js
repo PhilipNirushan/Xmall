@@ -1,5 +1,16 @@
 import mongoose from 'mongoose'
 
+const reviewEventSchema = mongoose.Schema(
+  {
+    name: { type: String, required: true },
+    rating: { type: Number, required: true },
+    comment: { type: String, required: true },
+  },
+  {
+    timestamps: true,
+  }
+)
+
 const eventSchema = mongoose.Schema(
   {
     user: {
@@ -22,6 +33,17 @@ const eventSchema = mongoose.Schema(
     description: {
       type: String,
       required: true,
+    },
+    reviews: [reviewEventSchema],
+    rating: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    numReviews: {
+      type: Number,
+      required: true,
+      default: 0,
     },
     price: {
       type: Number,

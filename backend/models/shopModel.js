@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const reviewSchema = mongoose.Schema(
+const reviewShopSchema = mongoose.Schema(
   {
     name: { type: String, required: true },
     rating: { type: Number, required: true },
@@ -34,7 +34,7 @@ const shopSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    reviews: [reviewSchema],
+    reviews: [reviewShopSchema],
     rating: {
       type: Number,
       required: true,
@@ -44,6 +44,10 @@ const shopSchema = mongoose.Schema(
       type: Number,
       required: true,
       default: 0,
+    },
+    time: {
+      type: String,
+      required: true,
     },
   },
   {

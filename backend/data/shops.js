@@ -1,92 +1,86 @@
 const shops = [
-    {
-      _id: '1',
-      name: 'Original 326',
-      image: '/Images/shops/shop1.jpg',
-      description:'Original is one of the largest international fashion companies.',
-      time: 'From 10.00 AM To 09.00 PM',
+  {
+    name: 'Original 326',
+    image: '/Images/shops/shop1.jpg',
+    description:
+      'Original is one of the largest international fashion companies.',
+    time: 'From 10.00 AM To 09.00 PM',
     //   brand: 'Apple',
-    //   category: 'Electronics',
+    category: 'Electronics',
     //   price: 89.99,
     //   countInStock: 10,
-      rating: 4.5,
-      numReviews: 12,
-      location:'Third floor',
-      telephone:'1-800-1234-567',
-      mail: 'mail@demolink.org',
-      website: 'demolink.org'
-    },
-    {
-      _id: '2',
-      name: 'Andrew Jones Studio',
-      image: '/Images/shops/shop2.jpg',
-      description:
-        'Andrew Jones Studio is a jewelry store located at XMall, in San Diego.',
-      time: 'From 10.00 AM To 09.00 PM',
+    rating: 4.5,
+    numReviews: 12,
+    // location: 'Third floor',
+    // telephone: '1-800-1234-567',
+    // mail: 'mail@demolink.org',
+    // website: 'demolink.org',
+  },
+  {
+    name: 'Andrew Jones Studio',
+    image: '/Images/shops/shop2.jpg',
+    description:
+      'Andrew Jones Studio is a jewelry store located at XMall, in San Diego.',
+    time: 'From 10.00 AM To 09.00 PM',
     //   brand: 'Apple',
-    //   category: 'Electronics',
+    category: 'Electronics',
     //   price: 599.99,
     //   countInStock: 7,
-      rating: 4.0,
-      numReviews: 8,
-    },
-    {
-      _id: '3',
-      name: 'Sam Records',
-      image: '/Images/shops/shop3.jpg',
-      description:
-        'Sam Records offers a wide variety of affordable music CDs available at our mall.',
-      time: 'From 10.00 AM To 09.00 PM',
+    rating: 4.0,
+    numReviews: 8,
+  },
+  {
+    name: 'Sam Records',
+    image: '/Images/shops/shop3.jpg',
+    description:
+      'Sam Records offers a wide variety of affordable music CDs available at our mall.',
+    time: 'From 10.00 AM To 09.00 PM',
     //   brand: 'Cannon',
-    //   category: 'Electronics',
+    category: 'Electronics',
     //   price: 929.99,
     //   countInStock: 5,
-      rating: 3,
-      numReviews: 12,
-    },
-    {
-      _id: '4',
-      name: 'Authentic',
-      image: '/Images/shops/shop4.jpg',
-      description:
-        'Authentic creates clothes for the modern women who like to look stylish.',
-      time: 'From 10.00 AM To 09.00 PM',
+    rating: 3,
+    numReviews: 12,
+  },
+  {
+    name: 'Authentic',
+    image: '/Images/shops/shop4.jpg',
+    description:
+      'Authentic creates clothes for the modern women who like to look stylish.',
+    time: 'From 10.00 AM To 09.00 PM',
     //   brand: 'Sony',
-    //   category: 'Electronics',
+    category: 'Electronics',
     //   price: 399.99,
     //   countInStock: 11,
-      rating: 5,
-      numReviews: 12,
-    },
-    {
-      _id: '5',
-      name: 'Bellerose',
-      image: '/Images/shops/shop5.jpg',
-      description:
-        'Bellerose had embellished beautiful journey of over 10 years in the personalized gifts industry.',
-      time: 'From 10.00 AM To 09.00 PM',
+    rating: 5,
+    numReviews: 12,
+  },
+  {
+    name: 'Bellerose',
+    image: '/Images/shops/shop5.jpg',
+    description:
+      'Bellerose had embellished beautiful journey of over 10 years in the personalized gifts industry.',
+    time: 'From 10.00 AM To 09.00 PM',
     //   brand: 'Logitech',
-    //   category: 'Electronics',
+    category: 'Electronics',
     //   price: 49.99,
     //   countInStock: 7,
-      rating: 3.5,
-      numReviews: 10,
-    },
-    {
-      _id: '6',
-      name: 'Wilsons',
-      image: '/Images/shops/shop6.jpg',
-      description:
-        'Colombo has slowly grown to five retail furniture stores including XMall.',
-      time: 'From 10.00 AM To 09.00 PM',
+    rating: 3.5,
+    numReviews: 10,
+  },
+  {
+    name: 'Wilsons',
+    image: '/Images/shops/shop6.jpg',
+    description:
+      'Colombo has slowly grown to five retail furniture stores including XMall.',
+    time: 'From 10.00 AM To 09.00 PM',
     //   brand: 'Amazon',
-    //   category: 'Electronics',
+    category: 'Electronics',
     //   price: 29.99,
     //   countInStock: 0,
-      rating: 4,
-      numReviews: 12,
-    },
-  ]
-  
+    rating: 4,
+    numReviews: 12,
+  },
+]
+
 export default shops
-  
