@@ -5,6 +5,7 @@ import connectDB from './config/db.js'
 import eventRoutes from './routes/eventRoutes.js'
 import shopRoutes from './routes/shopRoutes.js'
 import userRoutes from './routes/userRoutes.js'
+import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 
 dotenv.config()
 
@@ -23,6 +24,9 @@ app.use('/api/events', eventRoutes)
 app.use('/api/shops', shopRoutes)
 
 app.use('/api/users', userRoutes)
+
+app.use(notFound)
+app.use(errorHandler)
 
 const PORT = process.env.PORT || 5000
 

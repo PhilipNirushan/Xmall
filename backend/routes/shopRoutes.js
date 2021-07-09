@@ -1,9 +1,8 @@
 import express from 'express'
 const router = express.Router()
-import { getShops, getShopsById } from '../controllers/shopController.js'
+import { getShops, getShopById } from '../controllers/shopController.js'
 
 router.route('/').get(getShops)
-
-router.route('/:id').get(getShopsById)
+router.route('/:id').get(getShopById)
 
 export default router
