@@ -12,14 +12,15 @@ const getShops = asyncHandler(async (req, res) => {
 // @desc  Fetch single shop
 // @route GET/api/shops/:id
 // @access Public
-const getShopsById = asyncHandler(async (req, res) => {
+const getShopById = asyncHandler(async (req, res) => {
   const shop = await Shop.findById(req.params.id)
 
   if (shop) {
     res.json(shop)
   } else {
-    res.status(404).json({ message: 'Shop Not Found' })
+    res.status(404)
+    throw new Error('Shop not found')
   }
 })
 
-export { getShops, getShopsById }
+export { getShops, getShopById }

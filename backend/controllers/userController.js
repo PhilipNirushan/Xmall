@@ -1,9 +1,9 @@
 import asyncHandler from 'express-async-handler'
+import generateToken from '../utils/generateToken.js'
 import User from '../models/userModel.js'
-import generateTokern from '../utils/generateToken.js'
 
 // @desc  Auth user & get token
-// @route POST api/users/login
+// @route POST /api/users/login
 // @access Public
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body
@@ -17,16 +17,16 @@ const authUser = asyncHandler(async (req, res) => {
       email: user.email,
       isAdmin: user.isAdmin,
       isShopOwner: user.isShopOwner,
-      token: generateTokern(user._id),
+      token: generateToken(user._id),
     })
   } else {
-    res.status(404)
+    res.status(401)
     throw new Error('Invalid email or password')
   }
 })
 
 // @desc  Register a new user
-// @route POST api/users
+// @route POST /api/users
 // @access Public
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body
@@ -51,7 +51,7 @@ const registerUser = asyncHandler(async (req, res) => {
       email: user.email,
       isAdmin: user.isAdmin,
       isShopOwner: user.isShopOwner,
-      token: generateTokern(user._id),
+      token: generateToken(user._id),
     })
   } else {
     res.status(400)
@@ -60,8 +60,8 @@ const registerUser = asyncHandler(async (req, res) => {
 })
 
 // @desc  Get user profile
-// @route GET api/users/profile
-// @access private
+// @route Get /api/users/profile
+// @access Private
 const getUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id)
 

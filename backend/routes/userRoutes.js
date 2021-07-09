@@ -4,7 +4,7 @@ import {
   authUser,
   registerUser,
   getUserProfile,
-} from '../controllers/userController.js'
+} from '../controllers/userController.js '
 import { protect } from '../middleware/authMiddleware.js'
 
 router.route('/').post(registerUser)
