@@ -4,7 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import { shopListReducer, shopDetailsReducer } from './reducers/shopReducer'
 import { eventListReducer, eventDetailsReducer } from './reducers/eventReducer'
 import { cartReducer } from './reducers/cartReducer'
-import { userLoginReducer } from './reducers/userReducers'
+import { userLoginReducer, userRegisterReducer } from './reducers/userReducers'
 
 const reducer = combineReducers({
   shopList: shopListReducer,
@@ -13,6 +13,7 @@ const reducer = combineReducers({
   eventDetails: eventDetailsReducer,
   cart: cartReducer,
   userLogin: userLoginReducer,
+  userRegister: userRegisterReducer,
 })
 
 const cartItemsFormStorage = localStorage.getItem('cartItems')
