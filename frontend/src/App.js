@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Header from './Components/Navbar/Header'
 import Footer from './Components/Footer/Footer'
 import RegisterScreen from './Screens/RegisterScreen'
+import ProfileScreen from './Screens/ProfileScreen'
 import LoginScreen from './Screens/LoginScreen'
 import ShopScreen from './Screens/ShopScreen'
 import EachShopScreen from './Screens/EachShopScreen'
@@ -21,8 +22,9 @@ function App() {
         <Route path='/shops' component={ShopScreen} exact />
         <Route path='/shops/:id' component={EachShopScreen} />
         <Route path='/contact' component={ContactScreen} exact />
-        <Route path='/login' component={LoginScreen} exact />
-        <Route path='/register' component={RegisterScreen} exact />
+        <Route path='/login' component={LoginScreen} />
+        <Route path='/register' component={RegisterScreen} />
+        <Route path='/profile' component={ProfileScreen} />
         <Route path='/events' component={EventScreen} exact />
         <Route path='/events/:id' component={EachEventScreen} />
         <Route path='/cart/:id?' component={CartScreen} />
