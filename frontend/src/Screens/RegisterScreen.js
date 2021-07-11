@@ -76,7 +76,7 @@ const RegisterScreen = ({ location, history }) => {
                       <Form.Group controlId='name'>
                         <Form.Label>FullName</Form.Label>
                         <Form.Control
-                          type='text'
+                          type='name'
                           placeholder='Enter your Name'
                           value={name}
                           onChange={e => {
