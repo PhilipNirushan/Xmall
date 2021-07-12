@@ -12,6 +12,8 @@ import Home from './Screens/HomeScreen/Home'
 import EventScreen from './Screens/EventScreen'
 import EachEventScreen from './Screens/EachEventScreen'
 import CartScreen from './Screens/CartScreen'
+import PaymentScreen from './Screens/PaymentScreen'
+import BookingScreen from './Screens/BookingScreen'
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
         <Route path='/events' component={EventScreen} exact />
         <Route path='/events/:id' component={EachEventScreen} />
         <Route path='/cart/:id?' component={CartScreen} />
+        <Route path='/payment' component={PaymentScreen} />
+        <Route path='/bookevent' component={BookingScreen} />
         <Footer />
       </div>
     </Router>

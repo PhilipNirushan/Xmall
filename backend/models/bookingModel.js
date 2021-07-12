@@ -13,7 +13,7 @@ const bookingSchema = mongoose.Schema(
         qty: { type: Number, required: true },
         image: { type: String, required: true },
         price: { type: Number, required: true },
-        product: {
+        event: {
           type: mongoose.Schema.Types.ObjectId,
           required: true,
           ref: 'Event',
@@ -41,14 +41,6 @@ const bookingSchema = mongoose.Schema(
       default: false,
     },
     paidAt: {
-      type: Date,
-    },
-    isDelivered: {
-      type: Boolean,
-      required: true,
-      default: false,
-    },
-    deliveredAt: {
       type: Date,
     },
   },
