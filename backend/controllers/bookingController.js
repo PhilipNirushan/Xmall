@@ -26,4 +26,45 @@ const addNewBookings = asyncHandler(async (req, res) => {
   }
 })
 
-export { addNewBookings }
+// @desc  Get booking by ID
+// @route GET /api/bookings/:id
+// @access Private
+const getBookingById = asyncHandler(async (req, res) => {
+  const booking = await Booking.findById(req.params.id).populate(
+    'user',
+    'name email'
+  )
+
+  if (booking) {
+    res.json(booking)
+  } else {
+    res.status(404)
+    throw new Error('Booking Not Found')
+  }
+})
+
+// @desc  Update booking to paid
+// @route GET /api/bookings/:id/pay
+// @access Private
+const updateBookingToPaid = asyncHandler(async (req, res) => {
+  const booking = await Booking.findById(req.params.id)
+
+  if (booking) {
+    ;(booking.isPaid = true), (booking.paidAt = Date.now())
+    booking.paymentResult = {
+      id: req.body.id,
+      status: req.body.status,
+      update_time: req.body.update_time,
+      email_address: req.body.payer.email_address,
+    }
+
+    const updatedBooking = await booking.save()
+
+    res.json(updatedBooking)
+  } else {
+    res.status(404)
+    throw new Error('Booking Not Found')
+  }
+})
+
+export { addNewBookings, getBookingById, updateBookingToPaid }

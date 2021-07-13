@@ -10,7 +10,11 @@ import {
   userDetailsReducer,
   userUpdateProfileReducer,
 } from './reducers/userReducers'
-import { bookingCreateReducer } from './reducers/bookingReducers'
+import {
+  bookingCreateReducer,
+  bookingDetailsReducer,
+  bookingPayReducer,
+} from './reducers/bookingReducers'
 
 const reducer = combineReducers({
   shopList: shopListReducer,
@@ -23,6 +27,8 @@ const reducer = combineReducers({
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer,
   bookingCreate: bookingCreateReducer,
+  bookingDetails: bookingDetailsReducer,
+  bookingPay: bookingPayReducer,
 })
 
 const cartItemsFormStorage = localStorage.getItem('cartItems')

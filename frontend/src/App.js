@@ -13,6 +13,7 @@ import EventScreen from './Screens/EventScreen'
 import EachEventScreen from './Screens/EachEventScreen'
 import CartScreen from './Screens/CartScreen'
 import PaymentScreen from './Screens/PaymentScreen'
+import MakeBookingScreen from './Screens/MakeBookingScreen'
 import BookingScreen from './Screens/BookingScreen'
 
 function App() {
@@ -31,7 +32,8 @@ function App() {
         <Route path='/events/:id' component={EachEventScreen} />
         <Route path='/cart/:id?' component={CartScreen} />
         <Route path='/payment' component={PaymentScreen} />
-        <Route path='/bookevent' component={BookingScreen} />
+        <Route path='/bookevent' component={MakeBookingScreen} />
+        <Route path='/bookings/:id' component={BookingScreen} />
         <Footer />
       </div>
     </Router>
