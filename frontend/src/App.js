@@ -15,6 +15,8 @@ import CartScreen from './Screens/CartScreen'
 import PaymentScreen from './Screens/PaymentScreen'
 import MakeBookingScreen from './Screens/MakeBookingScreen'
 import BookingScreen from './Screens/BookingScreen'
+import UserListScreen from './Screens/UserListScreen'
+import UserEditScreen from './Screens/UserEditScreen'
 
 function App() {
   return (
@@ -34,6 +36,8 @@ function App() {
         <Route path='/payment' component={PaymentScreen} />
         <Route path='/bookevent' component={MakeBookingScreen} />
         <Route path='/bookings/:id' component={BookingScreen} />
+        <Route path='/admin/userlist' component={UserListScreen} />
+        <Route path='/admin/user/:id/edit' component={UserEditScreen} />
         <Footer />
       </div>
     </Router>
