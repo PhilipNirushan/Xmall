@@ -8,6 +8,10 @@ import {
   SHOP_DELETE_REQUEST,
   SHOP_DELETE_SUCCESS,
   SHOP_DELETE_FAIL,
+  SHOP_CREATE_REQUEST,
+  SHOP_CREATE_SUCCESS,
+  SHOP_CREATE_FAIL,
+  SHOP_CREATE_RESET,
 } from '../constants/shopConstants'
 
 export const shopListReducer = (state = { shops: [] }, action) => {
@@ -47,6 +51,21 @@ export const shopDeleteReducer = (state = {}, action) => {
       return { loading: false, success: true }
     case SHOP_DELETE_FAIL:
       return { loading: false, error: action.payload }
+    default:
+      return state
+  }
+}
+
+export const shopCreateReducer = (state = {}, action) => {
+  switch (action.type) {
+    case SHOP_CREATE_REQUEST:
+      return { loading: true }
+    case SHOP_CREATE_SUCCESS:
+      return { loading: false, success: true, shop: action.payload }
+    case SHOP_CREATE_FAIL:
+      return { loading: false, error: action.payload }
+    case SHOP_CREATE_RESET:
+      return {}
     default:
       return state
   }

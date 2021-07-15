@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Container, Table, Button, Row, Col } from 'react-bootstrap'
 import Message from '../Components/Message'
 import Loader from '../Components/Loader'
-import { listShops, deleteShop } from '../actions/shopActions'
+import { listShops, deleteShop, createShop } from '../actions/shopActions'
+import { SHOP_CREATE_RESET } from '../constants/shopConstants'
 
 const ShopListScreen = ({ history, match }) => {
   const dispatch = useDispatch()
@@ -19,16 +20,30 @@ const ShopListScreen = ({ history, match }) => {
     success: successDelete,
   } = shopDelete
 
+  const shopCreate = useSelector(state => state.shopCreate)
+  const {
+    loading: loadingCreate,
+    error: errorCreate,
+    success: successCreate,
+    shop: createdShop,
+  } = shopCreate
+
   const userLogin = useSelector(state => state.userLogin)
   const { userInfo } = userLogin
 
   useEffect(() => {
-    if (userInfo && userInfo.isAdmin) {
-      dispatch(listShops())
-    } else {
+    dispatch({ type: SHOP_CREATE_RESET })
+
+    if (!userInfo.isAdmin) {
       history.push('/login')
     }
-  }, [dispatch, history, userInfo, successDelete])
+
+    if (successCreate) {
+      history.push(`/admin/shop/${createdShop._id}/edit`)
+    } else {
+      dispatch(listShops())
+    }
+  }, [dispatch, history, userInfo, successDelete, successCreate, createdShop])
 
   const deleteHandler = id => {
     if (window.confirm('Are you sure')) {
@@ -36,8 +51,8 @@ const ShopListScreen = ({ history, match }) => {
     }
   }
 
-  const createShopHandler = shop => {
-    // CREATE SHOP
+  const createShopHandler = () => {
+    dispatch(createShop())
   }
 
   return (
@@ -54,6 +69,8 @@ const ShopListScreen = ({ history, match }) => {
       </Row>
       {loadingDelete && <Loader />}
       {errorDelete && <Message variant='danger'>{errorDelete}</Message>}
+      {loadingCreate && <Loader />}
+      {errorCreate && <Message variant='danger'>{errorCreate}</Message>}
       {loading ? (
         <Loader />
       ) : error ? (

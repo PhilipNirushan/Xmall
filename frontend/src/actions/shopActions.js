@@ -9,6 +9,9 @@ import {
   SHOP_DELETE_REQUEST,
   SHOP_DELETE_SUCCESS,
   SHOP_DELETE_FAIL,
+  SHOP_CREATE_REQUEST,
+  SHOP_CREATE_SUCCESS,
+  SHOP_CREATE_FAIL,
 } from '../constants/shopConstants'
 
 export const listShops = () => async dispatch => {
@@ -74,6 +77,36 @@ export const deleteShop = id => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: SHOP_DELETE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
+
+export const createShop = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: SHOP_CREATE_REQUEST,
+    })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    const { data } = await axios.post(`/api/shops`, {}, config)
+
+    dispatch({ type: SHOP_CREATE_SUCCESS, payload: data })
+  } catch (error) {
+    dispatch({
+      type: SHOP_CREATE_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

@@ -5,11 +5,13 @@ import {
   shopListReducer,
   shopDetailsReducer,
   shopDeleteReducer,
+  shopCreateReducer,
 } from './reducers/shopReducer'
 import {
   eventListReducer,
   eventDetailsReducer,
   eventDeleteReducer,
+  eventCreateReducer,
 } from './reducers/eventReducer'
 import { cartReducer } from './reducers/cartReducer'
 import {
@@ -32,9 +34,11 @@ const reducer = combineReducers({
   shopList: shopListReducer,
   shopDetails: shopDetailsReducer,
   shopDelete: shopDeleteReducer,
+  shopCreate: shopCreateReducer,
   eventList: eventListReducer,
   eventDetails: eventDetailsReducer,
   eventDelete: eventDeleteReducer,
+  eventCreate: eventCreateReducer,
   cart: cartReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,

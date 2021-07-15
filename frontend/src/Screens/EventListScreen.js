@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Container, Table, Button, Row, Col } from 'react-bootstrap'
 import Message from '../Components/Message'
 import Loader from '../Components/Loader'
-import { listEvents, deleteEvent } from '../actions/eventActions'
+import { listEvents, deleteEvent, createEvent } from '../actions/eventActions'
+import { EVENT_CREATE_RESET } from '../constants/eventConstants'
 
 const EventListScreen = ({ history, match }) => {
   const dispatch = useDispatch()
@@ -19,16 +20,30 @@ const EventListScreen = ({ history, match }) => {
     success: successDelete,
   } = eventDelete
 
+  const eventCreate = useSelector(state => state.eventCreate)
+  const {
+    loading: loadingCreate,
+    error: errorCreate,
+    success: successCreate,
+    event: createdEvent,
+  } = eventCreate
+
   const userLogin = useSelector(state => state.userLogin)
   const { userInfo } = userLogin
 
   useEffect(() => {
-    if (userInfo && userInfo.isAdmin) {
-      dispatch(listEvents())
-    } else {
+    dispatch({ type: EVENT_CREATE_RESET })
+
+    if (!userInfo.isAdmin) {
       history.push('/login')
     }
-  }, [dispatch, history, userInfo, successDelete])
+
+    if (successCreate) {
+      history.push(`/admin/event/${createdEvent._id}/edit`)
+    } else {
+      dispatch(listEvents())
+    }
+  }, [dispatch, history, userInfo, successDelete, successCreate, createdEvent])
 
   const deleteHandler = id => {
     if (window.confirm('Are you sure')) {
@@ -36,8 +51,8 @@ const EventListScreen = ({ history, match }) => {
     }
   }
 
-  const createEventHandler = event => {
-    // CREATE Event
+  const createEventHandler = () => {
+    dispatch(createEvent())
   }
 
   return (
@@ -54,6 +69,8 @@ const EventListScreen = ({ history, match }) => {
       </Row>
       {loadingDelete && <Loader />}
       {errorDelete && <Message variant='danger'>{errorDelete}</Message>}
+      {loadingCreate && <Loader />}
+      {errorCreate && <Message variant='danger'>{errorCreate}</Message>}
       {loading ? (
         <Loader />
       ) : error ? (
