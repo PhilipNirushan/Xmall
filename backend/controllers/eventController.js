@@ -23,4 +23,19 @@ const getEventById = asyncHandler(async (req, res) => {
   }
 })
 
-export { getEvents, getEventById }
+// @desc  Delete a event
+// @route DELETE /api/events/:id
+// @access Private/Admin
+const deleteEvent = asyncHandler(async (req, res) => {
+  const event = await Event.findById(req.params.id)
+
+  if (event) {
+    await event.remove()
+    res.json({ message: 'Event removed' })
+  } else {
+    res.status(404)
+    throw new Error('Event not found')
+  }
+})
+
+export { getEvents, getEventById, deleteEvent }
