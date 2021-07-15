@@ -23,4 +23,19 @@ const getShopById = asyncHandler(async (req, res) => {
   }
 })
 
-export { getShops, getShopById }
+// @desc  Delete a shop
+// @route DELETE /api/shops/:id
+// @access Private/Admin
+const deleteShop = asyncHandler(async (req, res) => {
+  const shop = await Shop.findById(req.params.id)
+
+  if (shop) {
+    await shop.remove()
+    res.json({ message: 'Shop removed' })
+  } else {
+    res.status(404)
+    throw new Error('Shop not found')
+  }
+})
+
+export { getShops, getShopById, deleteShop }
