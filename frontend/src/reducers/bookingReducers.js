@@ -9,6 +9,10 @@ import {
   BOOKING_PAY_SUCCESS,
   BOOKING_PAY_FAIL,
   BOOKING_PAY_RESET,
+  BOOKING_LIST_MY_REQUEST,
+  BOOKING_LIST_MY_SUCCESS,
+  BOOKING_LIST_MY_FAIL,
+  BOOKING_LIST_MY_RESET,
 } from '../constants/bookingConstants'
 
 export const bookingCreateReducer = (state = {}, action) => {
@@ -76,6 +80,29 @@ export const bookingPayReducer = (state = {}, action) => {
       }
     case BOOKING_PAY_RESET:
       return {}
+    default:
+      return state
+  }
+}
+
+export const bookingListMyReducer = (state = { bookings: [] }, action) => {
+  switch (action.type) {
+    case BOOKING_LIST_MY_REQUEST:
+      return {
+        loading: true,
+      }
+    case BOOKING_LIST_MY_SUCCESS:
+      return {
+        loading: false,
+        bookings: action.payload,
+      }
+    case BOOKING_LIST_MY_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      }
+    case BOOKING_LIST_MY_RESET:
+      return { bookings: [] }
     default:
       return state
   }

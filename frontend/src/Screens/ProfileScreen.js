@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 // import { Link } from 'react-router-dom'
+import { LinkContainer } from 'react-router-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserDetails, updateUserProfile } from '../actions/userActions'
-import { Container, Form, Row, Col, Button } from 'react-bootstrap'
+import { Container, Form, Row, Col, Button, Table } from 'react-bootstrap'
+import { listMyBookings } from '../actions/bookingActions'
 import Message from '../Components/Message'
 import Loader from '../Components/Loader'
 
@@ -24,12 +26,20 @@ const ProfileScreen = ({ location, history }) => {
   const userUpdateProfile = useSelector(state => state.userUpdateProfile)
   const { success } = userUpdateProfile
 
+  const bookingListMy = useSelector(state => state.bookingListMy)
+  const {
+    loading: loadingBookings,
+    error: errorBookings,
+    bookings,
+  } = bookingListMy
+
   useEffect(() => {
     if (!userInfo) {
       history.push('/login')
     } else {
       if (!user.name) {
         dispatch(getUserDetails('profile'))
+        dispatch(listMyBookings())
       } else {
         setName(user.name)
         setEmail(user.email)
@@ -107,6 +117,49 @@ const ProfileScreen = ({ location, history }) => {
         </Col>
         <Col md={9}>
           <h2>My Bookings</h2>
+          {loadingBookings ? (
+            <Loader />
+          ) : errorBookings ? (
+            <Message variant='danger'>{errorBookings}</Message>
+          ) : (
+            <Table striped borderd hover responsive className='table-sm'>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>DATE</th>
+                  <th>TOTAL</th>
+                  <th>PAID</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {bookings.map(booking => (
+                  <tr key={booking._id}>
+                    <td>{booking._id}</td>
+                    <td>{booking.createdAt.substring(0, 10)}</td>
+                    <td>{booking.totalPrice}</td>
+                    <td>
+                      {booking.isPaid ? (
+                        booking.paidAt.substring(0, 10)
+                      ) : (
+                        <i
+                          className='fas fa-times'
+                          style={{ color: 'red' }}
+                        ></i>
+                      )}
+                    </td>
+                    <td>
+                      <LinkContainer to={`/booking/${booking._id}`}>
+                        <Button className='btn-sm' variant='dark'>
+                          Details
+                        </Button>
+                      </LinkContainer>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          )}
         </Col>
       </Row>
     </Container>

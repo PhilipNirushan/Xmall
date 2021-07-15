@@ -60,7 +60,7 @@ const MakeBookingScreen = ({ history }) => {
         <Col md={8}>
           <ListGroup variant='flush'>
             <ListGroup.Item>
-              <h1>Booking</h1>
+              <h1>Booking Events</h1>
               <strong>Ref No: </strong>
               {userLogin.userInfo._id}
             </ListGroup.Item>

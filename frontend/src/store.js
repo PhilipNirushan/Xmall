@@ -25,6 +25,7 @@ import {
   bookingCreateReducer,
   bookingDetailsReducer,
   bookingPayReducer,
+  bookingListMyReducer,
 } from './reducers/bookingReducers'
 
 const reducer = combineReducers({
@@ -45,6 +46,7 @@ const reducer = combineReducers({
   bookingCreate: bookingCreateReducer,
   bookingDetails: bookingDetailsReducer,
   bookingPay: bookingPayReducer,
+  bookingListMy: bookingListMyReducer,
 })
 
 const cartItemsFormStorage = localStorage.getItem('cartItems')

@@ -12,7 +12,7 @@ const PaymentScreen = ({ history }) => {
   const submitHandler = e => {
     e.preventDefault()
     dispatch(savePaymentMethod(paymentMethod))
-    history.push('/bookevent')
+    history.push('/makebooking')
   }
 
   return (
@@ -24,18 +24,18 @@ const PaymentScreen = ({ history }) => {
           <Form onSubmit={submitHandler}>
             <Form.Group>
               <Form.Label as='legend'>Select Method</Form.Label>
+              <Col>
+                <Form.Check
+                  type='radio'
+                  label='PayPal or Credit Card'
+                  id='PayPal'
+                  name='paymentMethod'
+                  value='PayPal'
+                  checked
+                  onChange={e => setPaymentMethod(e.target.value)}
+                ></Form.Check>
+              </Col>
             </Form.Group>
-            <Col>
-              <Form.Check
-                type='radio'
-                label='PayPal or Credit Card'
-                id='PayPal'
-                name='paymentMethod'
-                value='PayPal'
-                checked
-                onChange={e => setPaymentMethod(e.target.value)}
-              ></Form.Check>
-            </Col>
             <Form.Row className='my-3'>
               <Col>
                 <Button variant='primary' type='submit' className='btn1'>

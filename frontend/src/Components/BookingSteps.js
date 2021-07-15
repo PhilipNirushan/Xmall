@@ -29,11 +29,11 @@ const BookingSteps = ({ step1, step2, step3 }) => {
 
         <Nav.Item>
           {step3 ? (
-            <LinkContainer to='/bookevent'>
-              <Nav.Link>Book Event</Nav.Link>
+            <LinkContainer to='/makebooking'>
+              <Nav.Link>Make Booking</Nav.Link>
             </LinkContainer>
           ) : (
-            <Nav.Link disabled>Book Event</Nav.Link>
+            <Nav.Link disabled>Make Booking</Nav.Link>
           )}
         </Nav.Item>
       </Nav>

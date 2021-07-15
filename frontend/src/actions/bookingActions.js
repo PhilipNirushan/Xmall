@@ -9,6 +9,9 @@ import {
   BOOKING_PAY_REQUEST,
   BOOKING_PAY_SUCCESS,
   BOOKING_PAY_FAIL,
+  BOOKING_LIST_MY_REQUEST,
+  BOOKING_LIST_MY_SUCCESS,
+  BOOKING_LIST_MY_FAIL,
 } from '../constants/bookingConstants'
 
 export const createBooking = booking => async (dispatch, getState) => {
@@ -116,3 +119,36 @@ export const payBooking =
       })
     }
   }
+
+export const listMyBookings = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: BOOKING_LIST_MY_REQUEST,
+    })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    const { data } = await axios.get(`/api/bookings/mybookings`, config)
+
+    dispatch({
+      type: BOOKING_LIST_MY_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+    dispatch({
+      type: BOOKING_LIST_MY_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
