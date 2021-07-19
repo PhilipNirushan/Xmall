@@ -7,27 +7,57 @@ import Message from '../Components/Message'
 import Loader from '../Components/Loader'
 import { register } from '../actions/userActions'
 
-const Title = styled.div`
-  font-size: 25px;
-  font-weight: 500;
-  position: relative;
-  ::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 3px;
-    width: 30px;
-    background: #9b59b5;
+/* Styling Begins */
+
+// const Title = styled.div`
+//   font-size: 25px;
+//   font-weight: 500;
+//   position: relative;
+//   ::before {
+//     content: '';
+//     position: absolute;
+//     left: 0;
+//     bottom: 0;
+//     height: 3px;
+//     width: 30px;
+//     background: #9b59b5;
+//   }
+// `
+
+const RegisterTitle = styled.div`
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  @media only screen and (max-width: 576px) {
+    text-align: center;
+  }
+  @media (min-width: 768px) {
+    font-size: 2.4rem;
+  }
+  @media (min-width: 992px) {
+    font-size: 2.7rem;
   }
 `
-
 const UserDetails = styled.div`
   @media only screen and (max-width: 576px) {
     height: 300px;
     overflow: scroll;
+    padding: 0px 15px;
   }
 `
+const RegisterButton = styled.div`
+  @media only screen and (max-width: 576px) {
+    padding: 0px 15px;
+  }
+`
+
+const AccountLink = styled.div`
+  @media only screen and (max-width: 576px) {
+    text-align: center;
+  }
+`
+
+/* Styling  Ends*/
 
 const RegisterScreen = ({ location, history }) => {
   const [name, setName] = useState('')
@@ -64,7 +94,9 @@ const RegisterScreen = ({ location, history }) => {
         <Row className='my-5'>
           <Col lg='2'></Col>
           <Col lg='8'>
-            <Title>Registration</Title>
+            <RegisterTitle className='animate__animated animate__pulse'>
+              Registration
+            </RegisterTitle>
             <div>
               {message && <Message variant='danger'>{message}</Message>}
               {error && <Message variant='danger'>{error}</Message>}
@@ -74,7 +106,7 @@ const RegisterScreen = ({ location, history }) => {
                   <Form.Row className='mb-1'>
                     <Col>
                       <Form.Group controlId='name'>
-                        <Form.Label>FullName</Form.Label>
+                        <Form.Label>Full Name</Form.Label>
                         <Form.Control
                           type='name'
                           placeholder='Enter your Name'
@@ -132,56 +164,27 @@ const RegisterScreen = ({ location, history }) => {
                     </Col>
                   </Form.Row>
                 </UserDetails>
-                {/* <fieldset>
-                  <Form.Row className='mb-1' style={{ 'margin-left': '1px' }}>
-                    <Form.Label>Gender</Form.Label>
-                  </Form.Row>
-                  <Form.Group as={Row}>
-                    <Col sm='3' xs='2'>
-                      <Form.Check
-                        inline
-                        type='radio'
-                        label='Male'
-                        name='formHorizontalRadios'
-                        id='formHorizontalRadios1'
-                      />
-                    </Col>
-                    <Col sm='3' xs='2'>
-                      <Form.Check
-                        inline
-                        type='radio'
-                        label='Female'
-                        name='formHorizontalRadios'
-                        id='formHorizontalRadios2'
-                      />
-                    </Col>
-                    <Col sm='4' xs='8'>
-                      <Form.Check
-                        inline
-                        type='radio'
-                        label='Prefer not to say'
-                        name='formHorizontalRadios'
-                        id='formHorizontalRadios3'
-                        className='radioOther'
-                      />
-                    </Col>
-                  </Form.Group>
-                </fieldset> */}
                 <Form.Row className='my-3'>
                   <Col>
-                    <Button variant='primary' type='submit' className='btn1'>
-                      Register
-                    </Button>
+                    <RegisterButton>
+                      <Button type='submit' className='btn1'>
+                        Register
+                      </Button>
+                    </RegisterButton>
                   </Col>
                 </Form.Row>
               </Form>
             </div>
             <Row className='py-3'>
               <Col>
-                Have an Account?{' '}
-                <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>
-                  Login
-                </Link>
+                <AccountLink>
+                  Have an Account?{' '}
+                  <Link
+                    to={redirect ? `/login?redirect=${redirect}` : '/login'}
+                  >
+                    Login
+                  </Link>
+                </AccountLink>
               </Col>
             </Row>
           </Col>
