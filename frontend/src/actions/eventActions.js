@@ -12,6 +12,9 @@ import {
   EVENT_CREATE_REQUEST,
   EVENT_CREATE_SUCCESS,
   EVENT_CREATE_FAIL,
+  EVENT_UPDATE_REQUEST,
+  EVENT_UPDATE_SUCCESS,
+  EVENT_UPDATE_FAIL,
 } from '../constants/eventConstants'
 
 export const listEvents = () => async dispatch => {
@@ -102,6 +105,37 @@ export const createEvent = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: EVENT_CREATE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
+
+export const updateEvent = event => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: EVENT_UPDATE_REQUEST,
+    })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    const { data } = await axios.put(`/api/events/${event._id}`, event, config)
+
+    dispatch({ type: EVENT_UPDATE_SUCCESS, payload: data })
+  } catch (error) {
+    dispatch({
+      type: EVENT_UPDATE_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

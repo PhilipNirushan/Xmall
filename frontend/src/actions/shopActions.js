@@ -12,6 +12,9 @@ import {
   SHOP_CREATE_REQUEST,
   SHOP_CREATE_SUCCESS,
   SHOP_CREATE_FAIL,
+  SHOP_UPDATE_REQUEST,
+  SHOP_UPDATE_SUCCESS,
+  SHOP_UPDATE_FAIL,
 } from '../constants/shopConstants'
 
 export const listShops = () => async dispatch => {
@@ -107,6 +110,37 @@ export const createShop = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: SHOP_CREATE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
+
+export const updateShop = shop => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: SHOP_UPDATE_REQUEST,
+    })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    const { data } = await axios.put(`/api/shops/${shop._id}`, shop, config)
+
+    dispatch({ type: SHOP_UPDATE_SUCCESS, payload: data })
+  } catch (error) {
+    dispatch({
+      type: SHOP_UPDATE_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

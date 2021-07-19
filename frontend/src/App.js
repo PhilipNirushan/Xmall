@@ -19,6 +19,8 @@ import UserListScreen from './Screens/UserListScreen'
 import UserEditScreen from './Screens/UserEditScreen'
 import ShopListScreen from './Screens/ShopListScreen'
 import EventListScreen from './Screens/EventListScreen'
+import ShopEditScreen from './Screens/ShopEditScreen'
+import EventEditScreen from './Screens/EventEditScreen'
 
 function App() {
   return (
@@ -41,7 +43,9 @@ function App() {
         <Route path='/admin/userlist' component={UserListScreen} />
         <Route path='/admin/user/:id/edit' component={UserEditScreen} />
         <Route path='/admin/shoplist' component={ShopListScreen} />
+        <Route path='/admin/shop/:id/edit' component={ShopEditScreen} />
         <Route path='/admin/eventlist' component={EventListScreen} />
+        <Route path='/admin/event/:id/edit' component={EventEditScreen} />
         <Footer />
       </div>
     </Router>

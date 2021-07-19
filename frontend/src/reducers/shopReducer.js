@@ -12,6 +12,10 @@ import {
   SHOP_CREATE_SUCCESS,
   SHOP_CREATE_FAIL,
   SHOP_CREATE_RESET,
+  SHOP_UPDATE_REQUEST,
+  SHOP_UPDATE_SUCCESS,
+  SHOP_UPDATE_FAIL,
+  SHOP_UPDATE_RESET,
 } from '../constants/shopConstants'
 
 export const shopListReducer = (state = { shops: [] }, action) => {
@@ -66,6 +70,21 @@ export const shopCreateReducer = (state = {}, action) => {
       return { loading: false, error: action.payload }
     case SHOP_CREATE_RESET:
       return {}
+    default:
+      return state
+  }
+}
+
+export const shopUpdateReducer = (state = { shop: {} }, action) => {
+  switch (action.type) {
+    case SHOP_UPDATE_REQUEST:
+      return { loading: true }
+    case SHOP_UPDATE_SUCCESS:
+      return { loading: false, success: true, shop: action.payload }
+    case SHOP_UPDATE_FAIL:
+      return { loading: false, error: action.payload }
+    case SHOP_UPDATE_RESET:
+      return { shop: {} }
     default:
       return state
   }

@@ -6,12 +6,14 @@ import {
   shopDetailsReducer,
   shopDeleteReducer,
   shopCreateReducer,
+  shopUpdateReducer,
 } from './reducers/shopReducer'
 import {
   eventListReducer,
   eventDetailsReducer,
   eventDeleteReducer,
   eventCreateReducer,
+  eventUpdateReducer,
 } from './reducers/eventReducer'
 import { cartReducer } from './reducers/cartReducer'
 import {
@@ -35,10 +37,12 @@ const reducer = combineReducers({
   shopDetails: shopDetailsReducer,
   shopDelete: shopDeleteReducer,
   shopCreate: shopCreateReducer,
+  shopUpdate: shopUpdateReducer,
   eventList: eventListReducer,
   eventDetails: eventDetailsReducer,
   eventDelete: eventDeleteReducer,
   eventCreate: eventCreateReducer,
+  eventUpdate: eventUpdateReducer,
   cart: cartReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
