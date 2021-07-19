@@ -21,6 +21,7 @@ import ShopListScreen from './Screens/ShopListScreen'
 import EventListScreen from './Screens/EventListScreen'
 import ShopEditScreen from './Screens/ShopEditScreen'
 import EventEditScreen from './Screens/EventEditScreen'
+import BookingListScreen from './Screens/BookingListScreen'
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
         <Route path='/admin/shop/:id/edit' component={ShopEditScreen} />
         <Route path='/admin/eventlist' component={EventListScreen} />
         <Route path='/admin/event/:id/edit' component={EventEditScreen} />
+        <Route path='/admin/bookinglist' component={BookingListScreen} />
         <Footer />
       </div>
     </Router>

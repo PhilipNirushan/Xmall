@@ -9,7 +9,7 @@ import Message from '../Components/Message'
 import Loader from '../Components/Loader'
 import axios from 'axios'
 
-const BookingScreen = ({ match }) => {
+const BookingScreen = ({ match, history }) => {
   const bookingId = match.params.id
 
   const [sdkReady, setSdkReady] = useState(false)
@@ -17,6 +17,7 @@ const BookingScreen = ({ match }) => {
   const dispatch = useDispatch()
 
   const userLogin = useSelector(state => state.userLogin)
+  const { userInfo } = userLogin
 
   const bookingDetails = useSelector(state => state.bookingDetails)
   const { booking, loading, error } = bookingDetails
@@ -36,6 +37,10 @@ const BookingScreen = ({ match }) => {
   }
 
   useEffect(() => {
+    if (!userInfo) {
+      history.push('/login')
+    }
+
     const addPayPalScript = async () => {
       const { data: clientId } = await axios.get('/api/config/paypal')
       const script = document.createElement('script')
@@ -58,7 +63,7 @@ const BookingScreen = ({ match }) => {
         setSdkReady(true)
       }
     }
-  }, [dispatch, bookingId, successPay, booking])
+  }, [dispatch, bookingId, successPay, booking, history, userInfo])
 
   const successPaymentHandler = paymentResult => {
     console.log(paymentResult)
