@@ -1,34 +1,37 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import '../index.css'
 import Rating from './Rating'
 
-const Shop = ({shop}) => {
-    return (
-        <Card className="py-3 p-3 rounded my-3">
-            <Link to={`/shops/${shop._id}`}>
-                <Card.Img variant="top" src={shop.image} alt="shops"/>
-            </Link>
-            <Card.Body>
-                <Link to={`/shops/${shop._id}`}>
-                    <Card.Title>
-                        {shop.name}
-                    </Card.Title>
-                </Link>
+const Shop = ({ shop }) => {
+  return (
+    <Card className='my-3 p-3 rounded'>
+      <Link to={`/shops/${shop._id}`}>
+        <Card.Img src={shop.image} alt='shops' fluid />
+      </Link>
 
-                <Card.Text as="div">
-                    <div className="my-3">
-                        <Rating value={shop.rating} text={`${shop.numReviews} reviews`}/>
-                    </div>
-                </Card.Text>
+      <Card.Body>
+        <Link to={`/shops/${shop._id}`} style={{ textDecoration: 'none' }}>
+          <Card.Title
+            style={{ color: 'black', textTransform: 'uppercase' }}
+            className='font-text'
+          >
+            {shop.name}
+          </Card.Title>
+        </Link>
 
-                <Card.Text>
-                    <strong>{shop.time}</strong>
-                </Card.Text>
-            </Card.Body>
-
-        </Card>
-    )
+        <Card.Text as='div'>
+          <>
+            <Rating value={shop.rating} text={`${shop.numReviews} reviews`} />
+          </>
+        </Card.Text>
+        {/* <Card.Text as='div'>
+          <Button className='btn1'>Details</Button>
+        </Card.Text> */}
+      </Card.Body>
+    </Card>
+  )
 }
 
 export default Shop

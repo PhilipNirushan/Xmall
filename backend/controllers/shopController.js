@@ -50,6 +50,9 @@ const createShop = asyncHandler(async (req, res) => {
     category: 'Sample category',
     numReviews: 0,
     description: 'Sample description',
+    location: 'Sample location',
+    phone: '000-000-0000',
+    website: 'Sample website',
   })
 
   const createdShop = await shop.save()
@@ -60,7 +63,8 @@ const createShop = asyncHandler(async (req, res) => {
 // @route PUT /api/shops/:id
 // @access Private/Admin
 const updateShop = asyncHandler(async (req, res) => {
-  const { name, time, image, category, description } = req.body
+  const { name, time, image, category, description, location, phone, website } =
+    req.body
 
   const shop = await Shop.findById(req.params.id)
 
@@ -69,7 +73,10 @@ const updateShop = asyncHandler(async (req, res) => {
       (shop.time = time),
       (shop.image = image),
       (shop.category = category),
-      (shop.description = description)
+      (shop.description = description),
+      (shop.location = location),
+      (shop.phone = phone),
+      (shop.website = website)
 
     const updatedShop = await shop.save()
     res.json(updatedShop)

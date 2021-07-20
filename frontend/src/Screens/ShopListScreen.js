@@ -6,6 +6,11 @@ import Message from '../Components/Message'
 import Loader from '../Components/Loader'
 import { listShops, deleteShop, createShop } from '../actions/shopActions'
 import { SHOP_CREATE_RESET } from '../constants/shopConstants'
+import styled from 'styled-components'
+
+const Heading = styled.h1`
+  font-weight: 300;
+`
 
 const ShopListScreen = ({ history, match }) => {
   const dispatch = useDispatch()
@@ -56,10 +61,10 @@ const ShopListScreen = ({ history, match }) => {
   }
 
   return (
-    <Container>
-      <Row className='align-items-center'>
+    <Container className='my-5'>
+      <Row className='align-items-center mb-3'>
         <Col>
-          <h1>Shops</h1>
+          <Heading>Shops</Heading>
         </Col>
         <Col className='text-right'>
           <Button className='my-3' onClick={createShopHandler}>
@@ -82,6 +87,7 @@ const ShopListScreen = ({ history, match }) => {
               <th>ID</th>
               <th>NAME</th>
               <th>CATEGORY</th>
+              <th>PHONE</th>
             </tr>
           </thead>
           <tbody>
@@ -90,6 +96,7 @@ const ShopListScreen = ({ history, match }) => {
                 <td>{shop._id}</td>
                 <td>{shop.name}</td>
                 <td>{shop.category}</td>
+                <td>{shop.phone}</td>
                 <td>
                   <LinkContainer to={`/admin/shop/${shop._id}/edit`}>
                     <Button variant='light' className='btn-sm'>

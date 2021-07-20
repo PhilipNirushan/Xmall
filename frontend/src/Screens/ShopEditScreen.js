@@ -16,6 +16,9 @@ const ShopEditScreen = ({ match, history }) => {
   const [image, setImage] = useState('')
   const [category, setCategory] = useState('')
   const [description, setDescription] = useState('')
+  const [location, setLocation] = useState('')
+  const [phone, setPhone] = useState('')
+  const [website, setWebsite] = useState('')
   const [uploading, setUploading] = useState(false)
 
   const dispatch = useDispatch()
@@ -43,6 +46,9 @@ const ShopEditScreen = ({ match, history }) => {
         setImage(shop.image)
         setCategory(shop.category)
         setDescription(shop.description)
+        setLocation(shop.location)
+        setPhone(shop.phone)
+        setWebsite(shop.website)
       }
     }
   }, [dispatch, history, shopId, shop, successUpdate])
@@ -80,16 +86,19 @@ const ShopEditScreen = ({ match, history }) => {
         image,
         category,
         description,
+        location,
+        phone,
+        website,
       })
     )
   }
 
   return (
     <>
-      <Link to='/admin/shoplist' className='btn btn-light my-3'>
-        Go Back
-      </Link>
-      <Container>
+      <Container className='my-5'>
+        <Link to='/admin/shoplist' className='btn btn-light my-3'>
+          Go Back
+        </Link>
         <Row className='justify-content-md-center'>
           <Col xs={12} md={6}>
             <h1>Edit Shop</h1>
@@ -170,9 +179,45 @@ const ShopEditScreen = ({ match, history }) => {
                   ></Form.Control>
                 </Form.Group>
 
+                <Form.Group controlId='location'>
+                  <Form.Label>Location</Form.Label>
+                  <Form.Control
+                    type='text'
+                    placeholder='Enter Location'
+                    value={location}
+                    onChange={e => {
+                      setLocation(e.target.value)
+                    }}
+                  ></Form.Control>
+                </Form.Group>
+
+                <Form.Group controlId='phone'>
+                  <Form.Label>Phone</Form.Label>
+                  <Form.Control
+                    type='text'
+                    placeholder='Enter Phone'
+                    value={phone}
+                    onChange={e => {
+                      setPhone(e.target.value)
+                    }}
+                  ></Form.Control>
+                </Form.Group>
+
+                <Form.Group controlId='website'>
+                  <Form.Label>Website</Form.Label>
+                  <Form.Control
+                    type='text'
+                    placeholder='Enter Website URL'
+                    value={website}
+                    onChange={e => {
+                      setWebsite(e.target.value)
+                    }}
+                  ></Form.Control>
+                </Form.Group>
+
                 <Form.Row className='my-3'>
                   <Col>
-                    <Button variant='primary' type='submit' className='btn1'>
+                    <Button type='submit' className='btn1'>
                       Update
                     </Button>
                   </Col>

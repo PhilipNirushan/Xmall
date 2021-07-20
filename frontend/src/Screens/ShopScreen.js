@@ -5,6 +5,12 @@ import { listShops } from '../actions/shopActions'
 import Shop from '../Components/Shop'
 import Message from '../Components/Message'
 import Loader from '../Components/Loader'
+import styled from 'styled-components'
+
+const Heading = styled.h1`
+  text-align: center;
+  font-weight: 300;
+`
 
 const ShopScreen = () => {
   const dispatch = useDispatch()
@@ -16,8 +22,8 @@ const ShopScreen = () => {
   }, [dispatch])
 
   return (
-    <Container>
-      <h1>Shops</h1>
+    <Container className='my-5'>
+      <Heading className='mb-5'>THE SHOPS AT XMALL</Heading>
       {loading ? (
         <Loader />
       ) : error ? (
