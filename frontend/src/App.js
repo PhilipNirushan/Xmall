@@ -9,6 +9,7 @@ import ShopScreen from './Screens/ShopScreen'
 import EachShopScreen from './Screens/EachShopScreen'
 import ContactScreen from './Screens/ContactScreen'
 import Home from './Screens/HomeScreen/Home'
+import AboutScreen from './Screens/AboutScreen'
 import EventScreen from './Screens/EventScreen'
 import EachEventScreen from './Screens/EachEventScreen'
 import CartScreen from './Screens/CartScreen'
@@ -29,6 +30,7 @@ function App() {
       <div className='App'>
         <Header />
         <Route path='/' component={Home} exact />
+        <Route path='/about' component={AboutScreen} />
         <Route path='/shops' component={ShopScreen} exact />
         <Route path='/shops/:id' component={EachShopScreen} />
         <Route path='/contact' component={ContactScreen} exact />
