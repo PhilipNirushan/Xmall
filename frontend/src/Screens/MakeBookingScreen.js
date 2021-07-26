@@ -13,6 +13,26 @@ import { Link } from 'react-router-dom'
 import { createBooking } from '../actions/bookingActions'
 import Message from '../Components/Message'
 import BookingSteps from '../Components/BookingSteps'
+import styled from 'styled-components'
+
+const Heading = styled.h1`
+  text-transform: uppercase;
+  font-weight: 400;
+`
+const Heading2 = styled.h2`
+  font-weight: 300;
+`
+const Test = styled.span`
+  font-size: 20px;
+  font-weight: 700;
+`
+const Heading21 = styled.h2`
+  text-transform: uppercase;
+  font-weight: 400;
+  @media only screen and (max-width: 991px) {
+    font-size: 30px;
+  }
+`
 
 const MakeBookingScreen = ({ history }) => {
   const dispatch = useDispatch()
@@ -54,33 +74,33 @@ const MakeBookingScreen = ({ history }) => {
   }
 
   return (
-    <Container>
+    <Container className='my-5'>
       <BookingSteps step1 step2 step3 />
-      <Row>
-        <Col md={8}>
+      <Row className='py-3'>
+        <Col lg={8}>
           <ListGroup variant='flush'>
             <ListGroup.Item>
-              <h1>Booking Events</h1>
-              <strong>Ref No: </strong>
+              <Heading className='pb-4'>Event Booking</Heading>
+              <Test>Ref No: </Test>
               {userLogin.userInfo._id}
             </ListGroup.Item>
 
             <ListGroup.Item>
-              <h2>Payment Method</h2>
-              <strong>Method: </strong>
+              <Heading2 className='py-3'>Payment Method</Heading2>
+              <Test>Method: </Test>
               {cart.paymentMethod}
             </ListGroup.Item>
 
             <ListGroup.Item>
-              <h2>Booking Items</h2>
+              <Heading2 className='pt-3'>Booking Items</Heading2>
               {cart.cartItems.length === 0 ? (
                 <Message>Your Cart is emapty</Message>
               ) : (
                 <ListGroup variant='flush'>
                   {cart.cartItems.map((item, index) => (
                     <ListGroup.Item key={index}>
-                      <Row>
-                        <Col md={1}>
+                      <Row className='mt-3'>
+                        <Col lg={2} className='cart-col'>
                           <Image
                             src={item.image}
                             alt={item.name}
@@ -88,10 +108,10 @@ const MakeBookingScreen = ({ history }) => {
                             rounded
                           />
                         </Col>
-                        <Col>
+                        <Col className='cart-col'>
                           <Link to={`/events/${item.event}`}>{item.name}</Link>
                         </Col>
-                        <Col md={4}>
+                        <Col lg={4} className='cart-col'>
                           {item.qty} x ${item.price} =$
                           {addDecimals(item.qty * item.price)}
                         </Col>
@@ -103,17 +123,11 @@ const MakeBookingScreen = ({ history }) => {
             </ListGroup.Item>
           </ListGroup>
         </Col>
-        <Col md={4}>
-          <Card>
+        <Col lg={4} className='py-5'>
+          <Card className='makecenter'>
             <ListGroup variant='flush'>
               <ListGroup.Item>
-                <h2>Booking Summary</h2>
-              </ListGroup.Item>
-              <ListGroup.Item>
-                <Row>
-                  <Col>Events</Col>
-                  <Col>${cart.itemsPrice}</Col>
-                </Row>
+                <Heading21>Booking Summary</Heading21>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>

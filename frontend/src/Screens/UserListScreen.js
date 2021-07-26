@@ -5,6 +5,12 @@ import { Container, Table, Button } from 'react-bootstrap'
 import Message from '../Components/Message'
 import Loader from '../Components/Loader'
 import { listUsers, deleteUser } from '../actions/userActions'
+import styled from 'styled-components'
+
+const Heading = styled.h1`
+  font-weight: 300;
+  text-transform: uppercase;
+`
 
 const UserListScreen = ({ history }) => {
   const dispatch = useDispatch()
@@ -33,14 +39,14 @@ const UserListScreen = ({ history }) => {
   }
 
   return (
-    <Container>
-      <h1>Users</h1>
+    <Container className='my-5'>
+      <Heading>Users</Heading>
       {loading ? (
         <Loader />
       ) : error ? (
         <Message variant='danger'>{error}</Message>
       ) : (
-        <Table striped bordered hover responsive className='table-sm'>
+        <Table striped bordered hover responsive className='table-sm my-3'>
           <thead>
             <tr>
               <th>ID</th>

@@ -5,6 +5,12 @@ import { Container, Table, Button } from 'react-bootstrap'
 import Message from '../Components/Message'
 import Loader from '../Components/Loader'
 import { listBookings } from '../actions/bookingActions'
+import styled from 'styled-components'
+
+const Heading = styled.h1`
+  font-weight: 300;
+  text-transform: uppercase;
+`
 
 const BookingListScreen = ({ history }) => {
   const dispatch = useDispatch()
@@ -24,8 +30,8 @@ const BookingListScreen = ({ history }) => {
   }, [dispatch, history, userInfo])
 
   return (
-    <Container>
-      <h1>Bookings</h1>
+    <Container className='my-5'>
+      <Heading className='pb-4'>Bookings</Heading>
       {loading ? (
         <Loader />
       ) : error ? (
@@ -58,7 +64,7 @@ const BookingListScreen = ({ history }) => {
                 </td>
                 <td>
                   <LinkContainer to={`/booking/${booking._id}`}>
-                    <Button variant='light' className='btn-sm'>
+                    <Button variant='dark' className='btn-sm'>
                       Details
                     </Button>
                   </LinkContainer>

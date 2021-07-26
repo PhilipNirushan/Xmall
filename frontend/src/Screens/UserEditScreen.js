@@ -6,6 +6,11 @@ import { getUserDetails, updateUser } from '../actions/userActions'
 import { USER_UPDATE_RESET } from '../constants/userConstants'
 import Message from '../Components/Message'
 import Loader from '../Components/Loader'
+import styled from 'styled-components'
+
+const Heading = styled.h1`
+  font-weight: 600;
+`
 
 const UserEditScreen = ({ match, history }) => {
   const userId = match.params.id
@@ -54,7 +59,7 @@ const UserEditScreen = ({ match, history }) => {
       <Container>
         <Row className='justify-content-md-center'>
           <Col xs={12} md={6}>
-            <h1>Edit User</h1>
+            <Heading className='mb-3'>Edit User</Heading>
             {loadingUpdate && <Loader />}
             {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
             {loading ? (
@@ -100,7 +105,7 @@ const UserEditScreen = ({ match, history }) => {
 
                 <Form.Row className='my-3'>
                   <Col>
-                    <Button variant='primary' type='submit' className='btn1'>
+                    <Button type='submit' className='btn1'>
                       Update
                     </Button>
                   </Col>

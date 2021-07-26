@@ -48,7 +48,7 @@ const LoginScreen = ({ location, history }) => {
       <Container>
         <Row className='justify-content-md-center '>
           <Col xs={12} md={7} lg={5} className='px-5 pt-5 mb-3'>
-            <div className='py-3'>
+            <div>
               <LoginTitle className='animate__animated animate__pulse'>{`Welcome Back :)`}</LoginTitle>
               <span>
                 To keep connected with us please login with your personal
@@ -98,7 +98,7 @@ const LoginScreen = ({ location, history }) => {
                 <Link
                   to={redirect ? `/register?redirect=${redirect}` : '/register'}
                 >
-                  Sign Up
+                  Register
                 </Link>
               </Col>
             </Row>

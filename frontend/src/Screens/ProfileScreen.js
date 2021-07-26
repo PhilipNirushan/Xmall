@@ -7,6 +7,13 @@ import { Container, Form, Row, Col, Button, Table } from 'react-bootstrap'
 import { listMyBookings } from '../actions/bookingActions'
 import Message from '../Components/Message'
 import Loader from '../Components/Loader'
+import styled from 'styled-components'
+
+const Heading2 = styled.h2`
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 30px;
+`
 
 const ProfileScreen = ({ location, history }) => {
   const [name, setName] = useState('')
@@ -57,10 +64,10 @@ const ProfileScreen = ({ location, history }) => {
   }
 
   return (
-    <Container>
+    <Container className='my-5'>
       <Row>
-        <Col md={3}>
-          <h2>User Profile</h2>
+        <Col lg={3}>
+          <Heading2 className='makecenter pb-3'>User Profile</Heading2>
           {message && <Message variant='danger'>{message}</Message>}
           {error && <Message variant='danger'>{error}</Message>}
           {success && <Message variant='success'>Profile Updated!</Message>}
@@ -106,17 +113,19 @@ const ProfileScreen = ({ location, history }) => {
               />
             </Form.Group>
 
-            <Form.Row className='my-3'>
+            <Form.Row className='mt-4 mb-5'>
               <Col>
-                <Button variant='primary' type='submit' className='btn1'>
+                <Button type='submit' className='btn1'>
                   Update
                 </Button>
               </Col>
             </Form.Row>
           </Form>
         </Col>
-        <Col md={9}>
-          <h2>My Bookings</h2>
+        <Col lg={9}>
+          <Heading2 className='makecenter profile-row pb-5'>
+            My Bookings
+          </Heading2>
           {loadingBookings ? (
             <Loader />
           ) : errorBookings ? (

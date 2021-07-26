@@ -20,7 +20,9 @@
   color: white;
   background-color: black;
   border-radius: 4px;
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: uppercase;
 }
 
 .btn1:focus {
@@ -80,6 +82,24 @@
   color: black;
 }
 
+.btn-white {
+  background-color: #fff;
+  color: #000;
+  border-radius: 0;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 14px 30px 10px 30px;
+  transition: all 0.25s ease-in-out;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 14px;
+}
+
+.btn-white:hover {
+  background-color: black;
+  color: white;
+}
+
 @media only screen and (max-width: 576px) {
   .radioOther {
     margin-left: 15px;
@@ -89,5 +109,18 @@
 @media only screen and (max-width: 767px) {
   .btn-hide {
     display: none;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .cart-col {
+    padding-bottom: 10px;
+  }
+  .makecenter {
+    text-align: center;
+  }
+  .profile-row {
+    padding-top: 30px;
+    padding-bottom: 30px !important;
   }
 }

@@ -13,6 +13,12 @@ import {
 } from 'react-bootstrap'
 import Message from '../Components/Message'
 import { addToCart, removeFromCart } from '../actions/cartActions'
+import styled from 'styled-components'
+
+const Heading = styled.h1`
+  font-weight: 400;
+  text-transform: uppercase;
+`
 
 const CartScreen = ({ match, location, history }) => {
   const eventId = match.params.id
@@ -44,7 +50,7 @@ const CartScreen = ({ match, location, history }) => {
     <Container className='my-5'>
       <Row>
         <Col md={8}>
-          <h1>Bookings</h1>
+          <Heading className='mb-5'>Bookings</Heading>
           {cartItems.length === 0 ? (
             <Message>
               No Bookings have been made
@@ -57,14 +63,16 @@ const CartScreen = ({ match, location, history }) => {
               {cartItems.map(item => (
                 <ListGroup.Item key={item.event}>
                   <Row>
-                    <Col md={2}>
+                    <Col md={2} className='cart-col'>
                       <Image src={item.image} alt={item.name} fluid rounded />
                     </Col>
-                    <Col md={3}>
+                    <Col md={3} className='cart-col'>
                       <Link to={`/events/${item.event}`}>{item.name}</Link>
                     </Col>
-                    <Col md={2}>${item.price}</Col>
-                    <Col md={2}>
+                    <Col md={2} className='cart-col'>
+                      ${item.price}
+                    </Col>
+                    <Col md={2} className='cart-col'>
                       <Form.Control
                         as='select'
                         value={item.qty}
@@ -81,7 +89,7 @@ const CartScreen = ({ match, location, history }) => {
                         ))}
                       </Form.Control>
                     </Col>
-                    <Col md={2}>
+                    <Col md={2} className='cart-col mb-4'>
                       <Button
                         type='button'
                         variant='light'
@@ -96,15 +104,16 @@ const CartScreen = ({ match, location, history }) => {
             </ListGroup>
           )}
         </Col>
-        <Col md={4}>
+        <Col md={4} className='my-5'>
           <Card>
             <ListGroup variant='flush'>
               <ListGroup.Item>
-                <h2>
+                <h2 className='py-2'>
                   Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}
                   ) items
                 </h2>
-                $
+                <span>Total Price:</span>
+                <span>&nbsp;&nbsp;</span>$
                 {cartItems
                   .reduce((acc, item) => acc + item.qty * item.price, 0)
                   .toFixed(2)}
@@ -112,7 +121,7 @@ const CartScreen = ({ match, location, history }) => {
               <ListGroup.Item>
                 <Button
                   type='button'
-                  className='btn-block'
+                  className='btn-block btn1'
                   disabled={cartItems.length === 0}
                   onClick={checkoutHandler}
                 >

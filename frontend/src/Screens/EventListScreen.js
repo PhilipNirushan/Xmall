@@ -6,6 +6,12 @@ import Message from '../Components/Message'
 import Loader from '../Components/Loader'
 import { listEvents, deleteEvent, createEvent } from '../actions/eventActions'
 import { EVENT_CREATE_RESET } from '../constants/eventConstants'
+import styled from 'styled-components'
+
+const Heading = styled.h1`
+  font-weight: 300;
+  text-transform: uppercase;
+`
 
 const EventListScreen = ({ history, match }) => {
   const dispatch = useDispatch()
@@ -56,10 +62,10 @@ const EventListScreen = ({ history, match }) => {
   }
 
   return (
-    <Container>
-      <Row className='align-items-center'>
+    <Container className='my-5'>
+      <Row className='align-items-center mb-3'>
         <Col>
-          <h1>Events</h1>
+          <Heading>Events</Heading>
         </Col>
         <Col className='text-right'>
           <Button className='my-3' onClick={createEventHandler}>

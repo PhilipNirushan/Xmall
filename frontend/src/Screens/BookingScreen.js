@@ -8,6 +8,36 @@ import { BOOKING_PAY_RESET } from '../constants/bookingConstants'
 import Message from '../Components/Message'
 import Loader from '../Components/Loader'
 import axios from 'axios'
+import styled from 'styled-components'
+
+const Heading = styled.h1`
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 30px;
+`
+
+const Test = styled.span`
+  font-size: 18px;
+  font-weight: 700;
+`
+
+const TestHead = styled.span`
+  font-weight: 600;
+  @media only screen and (min-width: 768px) {
+    font-size: 35px !important;
+  }
+  @media only screen and (min-width: 576px) {
+    font-size: 30px;
+  }
+  @media only screen and (max-width: 576px) {
+    font-size: 20px;
+  }
+`
+
+const Heading2 = styled.h2`
+  text-transform: uppercase;
+  font-weight: 400;
+`
 
 const BookingScreen = ({ match, history }) => {
   const bookingId = match.params.id
@@ -76,28 +106,26 @@ const BookingScreen = ({ match, history }) => {
     <Message variant='danger'>{error}</Message>
   ) : (
     <>
-      <Container>
-        <h1>Booking {booking._id}</h1>
+      <Container className='my-5'>
+        <TestHead>Booking {booking._id}</TestHead>
         <Row>
-          <Col md={8}>
+          <Col lg={8}>
             <ListGroup variant='flush'>
               <ListGroup.Item>
-                <h1>Booking</h1>
+                <Heading className='py-4'>Booking</Heading>
                 <p>
-                  <strong>Name: </strong> {booking.user.name}
+                  <Test>Name: </Test> {booking.user.name}
                 </p>
                 <p>
-                  <strong>Email: </strong>
+                  <Test>Email: </Test>
                   <a href={`mailto:${booking.user.email}`}>
                     {booking.user.email}
                   </a>
                 </p>
-                <strong>Ref No: </strong>
-                {userLogin.userInfo._id}
               </ListGroup.Item>
 
               <ListGroup.Item>
-                <h2>Payment Method</h2>
+                <Heading className='py-4'>Payment Method</Heading>
                 <p>
                   {' '}
                   <strong>Method: </strong>
@@ -111,7 +139,7 @@ const BookingScreen = ({ match, history }) => {
               </ListGroup.Item>
 
               <ListGroup.Item>
-                <h2>Booking Events</h2>
+                <Heading className='py-4'>Booking Events</Heading>
                 {booking.bookingItems.length === 0 ? (
                   <Message>Booking is emapty</Message>
                 ) : (
@@ -119,7 +147,7 @@ const BookingScreen = ({ match, history }) => {
                     {booking.bookingItems.map((item, index) => (
                       <ListGroup.Item key={index}>
                         <Row>
-                          <Col md={1}>
+                          <Col lg={2} className='cart-col'>
                             <Image
                               src={item.image}
                               alt={item.name}
@@ -127,12 +155,12 @@ const BookingScreen = ({ match, history }) => {
                               rounded
                             />
                           </Col>
-                          <Col>
+                          <Col className='cart-col'>
                             <Link to={`/events/${item.event}`}>
                               {item.name}
                             </Link>
                           </Col>
-                          <Col md={4}>
+                          <Col lg={4} className='cart-col'>
                             {item.qty} x ${item.price} =$
                             {addDecimals(item.qty * item.price)}
                           </Col>
@@ -144,17 +172,11 @@ const BookingScreen = ({ match, history }) => {
               </ListGroup.Item>
             </ListGroup>
           </Col>
-          <Col md={4}>
-            <Card>
+          <Col lg={4} className='my-5'>
+            <Card className='makecenter'>
               <ListGroup variant='flush'>
                 <ListGroup.Item>
-                  <h2>Booking Summary</h2>
-                </ListGroup.Item>
-                <ListGroup.Item>
-                  <Row>
-                    <Col>Events</Col>
-                    <Col>${booking.itemsPrice}</Col>
-                  </Row>
+                  <Heading2>Booking Summary</Heading2>
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Row>
