@@ -53,6 +53,10 @@ const createShop = asyncHandler(async (req, res) => {
     location: 'Sample location',
     phone: '000-000-0000',
     website: 'Sample website',
+    offerName: 'Sample Offer Name',
+    offerDescription: 'Sample Offer Description',
+    offerStartDate: 'Sample Offer Start Date',
+    offerEndDate: 'Sample Offer End Date',
   })
 
   const createdShop = await shop.save()
@@ -63,8 +67,20 @@ const createShop = asyncHandler(async (req, res) => {
 // @route PUT /api/shops/:id
 // @access Private/Admin
 const updateShop = asyncHandler(async (req, res) => {
-  const { name, time, image, category, description, location, phone, website } =
-    req.body
+  const {
+    name,
+    time,
+    image,
+    category,
+    description,
+    location,
+    phone,
+    website,
+    offerName,
+    offerDescription,
+    offerStartDate,
+    offerEndDate,
+  } = req.body
 
   const shop = await Shop.findById(req.params.id)
 
@@ -76,7 +92,11 @@ const updateShop = asyncHandler(async (req, res) => {
       (shop.description = description),
       (shop.location = location),
       (shop.phone = phone),
-      (shop.website = website)
+      (shop.website = website),
+      (shop.offerName = offerName),
+      (shop.offerDescription = offerDescription),
+      (shop.offerStartDate = offerStartDate),
+      (shop.offerEndDate = offerEndDate)
 
     const updatedShop = await shop.save()
     res.json(updatedShop)
