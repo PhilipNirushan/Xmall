@@ -51,6 +51,10 @@ const createEvent = asyncHandler(async (req, res) => {
     numReviews: 0,
     countInStock: 0,
     description: 'Sample description',
+    host: 'Sample host',
+    time: 'Sample time',
+    startDate: 'Sample start date',
+    endDate: 'Sample end date',
   })
 
   const createdEvent = await event.save()
@@ -61,7 +65,18 @@ const createEvent = asyncHandler(async (req, res) => {
 // @route PUT /api/events/:id
 // @access Private/Admin
 const updateEvent = asyncHandler(async (req, res) => {
-  const { name, price, image, category, description, countInStock } = req.body
+  const {
+    name,
+    price,
+    image,
+    category,
+    description,
+    countInStock,
+    host,
+    time,
+    startDate,
+    endDate,
+  } = req.body
 
   const event = await Event.findById(req.params.id)
 
@@ -71,7 +86,11 @@ const updateEvent = asyncHandler(async (req, res) => {
       (event.image = image),
       (event.category = category),
       (event.description = description),
-      (event.countInStock = countInStock)
+      (event.countInStock = countInStock),
+      (event.host = host),
+      (event.time = time),
+      (event.startDate = startDate),
+      (event.endDate = endDate)
 
     const updatedEvent = await event.save()
     res.json(updatedEvent)

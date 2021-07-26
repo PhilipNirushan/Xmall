@@ -55,6 +55,22 @@ const eventSchema = mongoose.Schema(
       required: true,
       default: 0,
     },
+    time: {
+      type: String,
+      required: true,
+    },
+    startDate: {
+      type: String,
+      required: true,
+    },
+    endDate: {
+      type: String,
+      required: true,
+    },
+    host: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,

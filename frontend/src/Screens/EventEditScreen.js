@@ -7,6 +7,11 @@ import { listEventDetails, updateEvent } from '../actions/eventActions'
 import Message from '../Components/Message'
 import Loader from '../Components/Loader'
 import { EVENT_UPDATE_RESET } from '../constants/eventConstants'
+import styled from 'styled-components'
+
+const Heading = styled.h1`
+  font-weight: 600;
+`
 
 const EventEditScreen = ({ match, history }) => {
   const eventId = match.params.id
@@ -17,6 +22,10 @@ const EventEditScreen = ({ match, history }) => {
   const [category, setCategory] = useState('')
   const [countInStock, setCountInStock] = useState('')
   const [description, setDescription] = useState('')
+  const [host, setHost] = useState('')
+  const [time, setTime] = useState('')
+  const [startDate, setStartDate] = useState('')
+  const [endDate, setEndDate] = useState('')
   const [uploading, setUploading] = useState(false)
 
   const dispatch = useDispatch()
@@ -45,6 +54,10 @@ const EventEditScreen = ({ match, history }) => {
         setCategory(event.category)
         setDescription(event.description)
         setCountInStock(event.countInStock)
+        setHost(event.host)
+        setTime(event.time)
+        setStartDate(event.startDate)
+        setEndDate(event.endDate)
       }
     }
   }, [dispatch, history, eventId, event, successUpdate])
@@ -83,19 +96,23 @@ const EventEditScreen = ({ match, history }) => {
         category,
         description,
         countInStock,
+        host,
+        time,
+        startDate,
+        endDate,
       })
     )
   }
 
   return (
     <>
-      <Link to='/admin/eventlist' className='btn btn-light my-3'>
-        Go Back
-      </Link>
       <Container>
+        <Link to='/admin/eventlist' className='btn btn-light my-3'>
+          Go Back
+        </Link>
         <Row className='justify-content-md-center'>
           <Col xs={12} md={6}>
-            <h1>Edit Event</h1>
+            <Heading className='mb-3'>Edit Event</Heading>
             {loadingUpdate && <Loader />}
             {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
             {loading ? (
@@ -184,9 +201,57 @@ const EventEditScreen = ({ match, history }) => {
                   ></Form.Control>
                 </Form.Group>
 
-                <Form.Row className='my-3'>
+                <Form.Group controlId='host'>
+                  <Form.Label>Host</Form.Label>
+                  <Form.Control
+                    type='text'
+                    placeholder='Enter Host'
+                    value={host}
+                    onChange={e => {
+                      setHost(e.target.value)
+                    }}
+                  ></Form.Control>
+                </Form.Group>
+
+                <Form.Group controlId='time'>
+                  <Form.Label>Time</Form.Label>
+                  <Form.Control
+                    type='text'
+                    placeholder='Enter Time'
+                    value={time}
+                    onChange={e => {
+                      setTime(e.target.value)
+                    }}
+                  ></Form.Control>
+                </Form.Group>
+
+                <Form.Group controlId='startdate'>
+                  <Form.Label>Start Date</Form.Label>
+                  <Form.Control
+                    type='text'
+                    placeholder='Enter Start Date'
+                    value={startDate}
+                    onChange={e => {
+                      setStartDate(e.target.value)
+                    }}
+                  ></Form.Control>
+                </Form.Group>
+
+                <Form.Group controlId='enddate'>
+                  <Form.Label>End Date</Form.Label>
+                  <Form.Control
+                    type='text'
+                    placeholder='Enter Category'
+                    value={endDate}
+                    onChange={e => {
+                      setEndDate(e.target.value)
+                    }}
+                  ></Form.Control>
+                </Form.Group>
+
+                <Form.Row className='my-5'>
                   <Col>
-                    <Button variant='primary' type='submit' className='btn1'>
+                    <Button type='submit' className='btn1'>
                       Update
                     </Button>
                   </Col>
