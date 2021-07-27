@@ -20,26 +20,28 @@ import {
   SHOP_CREATE_REVIEW_FAIL,
 } from '../constants/shopConstants'
 
-export const listShops = () => async dispatch => {
-  try {
-    dispatch({ type: SHOP_LIST_REQUEST })
+export const listShops =
+  (keyword = '') =>
+  async dispatch => {
+    try {
+      dispatch({ type: SHOP_LIST_REQUEST })
 
-    const { data } = await axios.get('/api/shops')
+      const { data } = await axios.get(`/api/shops?keyword=${keyword}`)
 
-    dispatch({
-      type: SHOP_LIST_SUCCESS,
-      payload: data,
-    })
-  } catch (error) {
-    dispatch({
-      type: SHOP_LIST_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    })
+      dispatch({
+        type: SHOP_LIST_SUCCESS,
+        payload: data,
+      })
+    } catch (error) {
+      dispatch({
+        type: SHOP_LIST_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      })
+    }
   }
-}
 export const listShopDetails = id => async dispatch => {
   try {
     dispatch({ type: SHOP_DETAILS_REQUEST })

@@ -5,7 +5,20 @@ import Shop from '../models/shopModel.js'
 // @route GET/api/shops
 // @access Public
 const getShops = asyncHandler(async (req, res) => {
-  const shops = await Shop.find({})
+  const keyword = req.query.keyword
+    ? {
+        name: {
+          $regex: req.query.keyword,
+          $options: 'i',
+        },
+        // category: {
+        //   $regex: req.query.keyword,
+        //   $options: 'i',
+        // },
+      }
+    : {}
+
+  const shops = await Shop.find({ ...keyword })
   res.json(shops)
 })
 
