@@ -15,6 +15,9 @@ import {
   SHOP_UPDATE_REQUEST,
   SHOP_UPDATE_SUCCESS,
   SHOP_UPDATE_FAIL,
+  SHOP_CREATE_REVIEW_REQUEST,
+  SHOP_CREATE_REVIEW_SUCCESS,
+  SHOP_CREATE_REVIEW_FAIL,
 } from '../constants/shopConstants'
 
 export const listShops = () => async dispatch => {
@@ -148,3 +151,35 @@ export const updateShop = shop => async (dispatch, getState) => {
     })
   }
 }
+
+export const createShopReview =
+  (shopId, review) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: SHOP_CREATE_REVIEW_REQUEST,
+      })
+
+      const {
+        userLogin: { userInfo },
+      } = getState()
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      }
+
+      await axios.post(`/api/shops/${shopId}/reviews`, review, config)
+
+      dispatch({ type: SHOP_CREATE_REVIEW_SUCCESS })
+    } catch (error) {
+      dispatch({
+        type: SHOP_CREATE_REVIEW_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      })
+    }
+  }

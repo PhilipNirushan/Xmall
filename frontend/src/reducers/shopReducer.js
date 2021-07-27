@@ -16,6 +16,10 @@ import {
   SHOP_UPDATE_SUCCESS,
   SHOP_UPDATE_FAIL,
   SHOP_UPDATE_RESET,
+  SHOP_CREATE_REVIEW_REQUEST,
+  SHOP_CREATE_REVIEW_SUCCESS,
+  SHOP_CREATE_REVIEW_FAIL,
+  SHOP_CREATE_REVIEW_RESET,
 } from '../constants/shopConstants'
 
 export const shopListReducer = (state = { shops: [] }, action) => {
@@ -32,7 +36,7 @@ export const shopListReducer = (state = { shops: [] }, action) => {
 }
 
 export const shopDetailsReducer = (
-  state = { shop: { reviws: [] } },
+  state = { shop: { reviews: [] } },
   action
 ) => {
   switch (action.type) {
@@ -85,6 +89,21 @@ export const shopUpdateReducer = (state = { shop: {} }, action) => {
       return { loading: false, error: action.payload }
     case SHOP_UPDATE_RESET:
       return { shop: {} }
+    default:
+      return state
+  }
+}
+
+export const shopReviewCreateReducer = (state = {}, action) => {
+  switch (action.type) {
+    case SHOP_CREATE_REVIEW_REQUEST:
+      return { loading: true }
+    case SHOP_CREATE_REVIEW_SUCCESS:
+      return { loading: false, success: true }
+    case SHOP_CREATE_REVIEW_FAIL:
+      return { loading: false, error: action.payload }
+    case SHOP_CREATE_REVIEW_RESET:
+      return {}
     default:
       return state
   }

@@ -7,6 +7,7 @@ import {
   shopDeleteReducer,
   shopCreateReducer,
   shopUpdateReducer,
+  shopReviewCreateReducer,
 } from './reducers/shopReducer'
 import {
   eventListReducer,
@@ -39,6 +40,7 @@ const reducer = combineReducers({
   shopDelete: shopDeleteReducer,
   shopCreate: shopCreateReducer,
   shopUpdate: shopUpdateReducer,
+  shopReviewCreate: shopReviewCreateReducer,
   eventList: eventListReducer,
   eventDetails: eventDetailsReducer,
   eventDelete: eventDeleteReducer,

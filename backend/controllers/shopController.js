@@ -106,4 +106,52 @@ const updateShop = asyncHandler(async (req, res) => {
   }
 })
 
-export { getShops, getShopById, deleteShop, createShop, updateShop }
+// @desc  Create new review
+// @route POST /api/shops/:id/reviews
+// @access Private
+const createShopReview = asyncHandler(async (req, res) => {
+  const { rating, comment } = req.body
+
+  const shop = await Shop.findById(req.params.id)
+
+  if (shop) {
+    const alreadyReviewed = shop.reviews.find(
+      r => r.user.toString() === req.user._id.toString()
+    )
+
+    if (alreadyReviewed) {
+      res.status(400)
+      throw new Error('Shop already reviewed')
+    }
+
+    const review = {
+      name: req.user.name,
+      rating: Number(rating),
+      comment,
+      user: req.user._id,
+    }
+
+    shop.reviews.push(review)
+
+    shop.numReviews = shop.reviews.length
+
+    shop.rating =
+      shop.reviews.reduce((acc, item) => item.rating + acc, 0) /
+      shop.reviews.length
+
+    await shop.save()
+    res.status(201).json({ message: 'Review added' })
+  } else {
+    res.status(404)
+    throw new Error('Shop not found')
+  }
+})
+
+export {
+  getShops,
+  getShopById,
+  deleteShop,
+  createShop,
+  updateShop,
+  createShopReview,
+}
