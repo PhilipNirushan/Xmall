@@ -1,6 +1,25 @@
 .imgLogo {
-  width: 5em;
+  width: 6em;
 }
+
 .bg-myNav {
   background-color: black;
+}
+
+.nav-text {
+  font-size: 20px;
+  text-transform: uppercase;
+  margin: 0 25px;
+}
+
+@media only screen and (max-width: 575px) {
+  .nav-text {
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .navContainer {
+    margin: 0 30px;
+  }
 }

@@ -24,7 +24,7 @@ const Header = () => {
         sticky='top'
         collapseOnSelect
       >
-        <Container fluid>
+        <Container className='navContainer' fluid>
           <LinkContainer to='/'>
             <Navbar.Brand>
               <Image
@@ -35,25 +35,32 @@ const Header = () => {
               />
             </Navbar.Brand>
           </LinkContainer>
+
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ml-auto'>
-              <LinkContainer to='/' exact>
-                <Nav.Link className='text-white'>Home</Nav.Link>
+              <LinkContainer to='/about' exact>
+                <Nav.Link className='nav-text'>About</Nav.Link>
               </LinkContainer>
+
               <LinkContainer to='/shops' exact>
-                <Nav.Link className='text-white'>Shops</Nav.Link>
+                <Nav.Link className='nav-text'>Shopping</Nav.Link>
               </LinkContainer>
-              <LinkContainer to='/contact'>
-                <Nav.Link className='text-white'>Contact</Nav.Link>
+
+              <LinkContainer to='/events' exact>
+                <Nav.Link className='nav-text'>Events</Nav.Link>
               </LinkContainer>
-              <LinkContainer to='/cart'>
-                <Nav.Link className='text-white'>
-                  <i className='fas fa-shopping-cart'></i> Cart
-                </Nav.Link>
+
+              <LinkContainer to='/register'>
+                <Nav.Link className='nav-text'>Sign Up</Nav.Link>
               </LinkContainer>
+
               {userInfo ? (
-                <NavDropdown title={userInfo.name} id='username'>
+                <NavDropdown
+                  title={userInfo.name}
+                  id='username'
+                  className='nav-text'
+                >
                   <LinkContainer to='/profile'>
                     <NavDropdown.Item>Profile</NavDropdown.Item>
                   </LinkContainer>
@@ -63,10 +70,24 @@ const Header = () => {
                 </NavDropdown>
               ) : (
                 <LinkContainer to='/login'>
-                  <Nav.Link className='text-white'>
-                    <i className='fas fa-user'></i> Sign In
-                  </Nav.Link>
+                  <Nav.Link className='nav-text'>Sign In</Nav.Link>
                 </LinkContainer>
+              )}
+              {userInfo && userInfo.isAdmin && (
+                <NavDropdown title='Admin' id='adminmenu' className='nav-text'>
+                  <LinkContainer to='/admin/userlist'>
+                    <NavDropdown.Item>Users</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/admin/shoplist'>
+                    <NavDropdown.Item>Shops</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/admin/eventlist'>
+                    <NavDropdown.Item>Events</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/admin/bookinglist'>
+                    <NavDropdown.Item>Bookings</NavDropdown.Item>
+                  </LinkContainer>
+                </NavDropdown>
               )}
             </Nav>
           </Navbar.Collapse>
