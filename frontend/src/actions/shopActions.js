@@ -18,6 +18,9 @@ import {
   SHOP_CREATE_REVIEW_REQUEST,
   SHOP_CREATE_REVIEW_SUCCESS,
   SHOP_CREATE_REVIEW_FAIL,
+  SHOP_TOP_REQUEST,
+  SHOP_TOP_SUCCESS,
+  SHOP_TOP_FAIL,
 } from '../constants/shopConstants'
 
 export const listShops =
@@ -42,6 +45,7 @@ export const listShops =
       })
     }
   }
+
 export const listShopDetails = id => async dispatch => {
   try {
     dispatch({ type: SHOP_DETAILS_REQUEST })
@@ -185,3 +189,24 @@ export const createShopReview =
       })
     }
   }
+
+export const listTopShops = () => async dispatch => {
+  try {
+    dispatch({ type: SHOP_TOP_REQUEST })
+
+    const { data } = await axios.get(`/api/shops/top`)
+
+    dispatch({
+      type: SHOP_TOP_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+    dispatch({
+      type: SHOP_TOP_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}

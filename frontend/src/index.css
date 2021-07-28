@@ -127,6 +127,9 @@
     line-height: 1.9;
     width: 100%;
   }
+  .btncenter {
+    text-align: center;
+  }
 }
 
 @media only screen and (min-width: 576px) {

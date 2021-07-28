@@ -160,6 +160,15 @@ const createShopReview = asyncHandler(async (req, res) => {
   }
 })
 
+// @desc  Get top rated shops
+// @route GET  /api/shops/top
+// @access Public
+const getTopShops = asyncHandler(async (req, res) => {
+  const shops = await Shop.find({}).sort({ rating: -1 }).limit(3)
+
+  res.json(shops)
+})
+
 export {
   getShops,
   getShopById,
@@ -167,4 +176,5 @@ export {
   createShop,
   updateShop,
   createShopReview,
+  getTopShops,
 }

@@ -7,11 +7,13 @@ import {
   createShop,
   updateShop,
   createShopReview,
+  getTopShops,
 } from '../controllers/shopController.js'
 import { protect, admin } from '../middleware/authMiddleware.js'
 
 router.route('/').get(getShops).post(protect, admin, createShop)
 router.route('/:id/reviews').post(protect, createShopReview)
+router.get('/top', getTopShops)
 router
   .route('/:id')
   .get(getShopById)
