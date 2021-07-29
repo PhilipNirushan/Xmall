@@ -16,6 +16,9 @@ import {
   EVENT_UPDATE_SUCCESS,
   EVENT_UPDATE_FAIL,
   EVENT_UPDATE_RESET,
+  EVENT_HOME_REQUEST,
+  EVENT_HOME_SUCCESS,
+  EVENT_HOME_FAIL,
 } from '../constants/eventConstants'
 
 export const eventListReducer = (state = { events: [] }, action) => {
@@ -32,7 +35,7 @@ export const eventListReducer = (state = { events: [] }, action) => {
 }
 
 export const eventDetailsReducer = (
-  state = { event: { reviws: [] } },
+  state = { event: { reviews: [] } },
   action
 ) => {
   switch (action.type) {
@@ -85,6 +88,19 @@ export const eventUpdateReducer = (state = { event: {} }, action) => {
       return { loading: false, error: action.payload }
     case EVENT_UPDATE_RESET:
       return { event: {} }
+    default:
+      return state
+  }
+}
+
+export const eventHomeReducer = (state = { events: [] }, action) => {
+  switch (action.type) {
+    case EVENT_HOME_REQUEST:
+      return { loading: true, events: [] }
+    case EVENT_HOME_SUCCESS:
+      return { loading: false, events: action.payload }
+    case EVENT_HOME_FAIL:
+      return { loading: false, error: action.payload }
     default:
       return state
   }

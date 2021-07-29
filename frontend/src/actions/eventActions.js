@@ -15,6 +15,9 @@ import {
   EVENT_UPDATE_REQUEST,
   EVENT_UPDATE_SUCCESS,
   EVENT_UPDATE_FAIL,
+  EVENT_HOME_REQUEST,
+  EVENT_HOME_SUCCESS,
+  EVENT_HOME_FAIL,
 } from '../constants/eventConstants'
 
 export const listEvents = () => async dispatch => {
@@ -136,6 +139,27 @@ export const updateEvent = event => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: EVENT_UPDATE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
+
+export const listHomeEvents = () => async dispatch => {
+  try {
+    dispatch({ type: EVENT_HOME_REQUEST })
+
+    const { data } = await axios.get(`/api/events/eventhome`)
+
+    dispatch({
+      type: EVENT_HOME_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+    dispatch({
+      type: EVENT_HOME_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

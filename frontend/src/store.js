@@ -16,6 +16,7 @@ import {
   eventDeleteReducer,
   eventCreateReducer,
   eventUpdateReducer,
+  eventHomeReducer,
 } from './reducers/eventReducer'
 import { cartReducer } from './reducers/cartReducer'
 import {
@@ -48,6 +49,7 @@ const reducer = combineReducers({
   eventDelete: eventDeleteReducer,
   eventCreate: eventCreateReducer,
   eventUpdate: eventUpdateReducer,
+  eventHome: eventHomeReducer,
   cart: cartReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,

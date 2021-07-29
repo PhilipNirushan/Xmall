@@ -100,4 +100,20 @@ const updateEvent = asyncHandler(async (req, res) => {
   }
 })
 
-export { getEvents, getEventById, deleteEvent, createEvent, updateEvent }
+// @desc  Get  events home
+// @route GET  /api/events/eventhome
+// @access Public
+const getEventHome = asyncHandler(async (req, res) => {
+  const events = await Event.find({}).limit(2)
+
+  res.json(events)
+})
+
+export {
+  getEvents,
+  getEventById,
+  deleteEvent,
+  createEvent,
+  updateEvent,
+  getEventHome,
+}

@@ -11,8 +11,6 @@ const events = [
     category: 'Music & Entertainment',
     price: 89.99,
     countInStock: 10,
-    rating: 4.5,
-    numReviews: 12,
   },
   {
     name: 'Chef"s Tasting Series at Bluebird London',
@@ -26,8 +24,6 @@ const events = [
     category: 'Food & Drink',
     price: 599.99,
     countInStock: 7,
-    rating: 4.0,
-    numReviews: 8,
   },
   {
     name: 'Afternoon Tea at Bluebird London',
@@ -41,8 +37,6 @@ const events = [
     category: 'Food & Drink',
     price: 399.99,
     countInStock: 11,
-    rating: 5,
-    numReviews: 12,
   },
   {
     name: 'Live Weekend Entertainment',
@@ -56,8 +50,6 @@ const events = [
     category: 'Music & Entertainment',
     price: 929.99,
     countInStock: 5,
-    rating: 3,
-    numReviews: 12,
   },
   {
     name: 'XMall Cafe Evening',
@@ -71,8 +63,6 @@ const events = [
     category: 'Food & Drink',
     price: 49.99,
     countInStock: 7,
-    rating: 3.5,
-    numReviews: 10,
   },
   {
     name: 'Join Us at Kids Club!',
@@ -86,8 +76,6 @@ const events = [
     category: 'Kids Event',
     price: 24.99,
     countInStock: 3,
-    rating: 4,
-    numReviews: 12,
   },
   {
     name: 'All Star Lanes Hop Garden Brunch',
@@ -101,8 +89,6 @@ const events = [
     category: 'Food & Drink',
     price: 39.99,
     countInStock: 6,
-    rating: 4,
-    numReviews: 12,
   },
   {
     name: 'Bar W12 and Film Club',
@@ -116,8 +102,6 @@ const events = [
     category: 'Music & Entertainment',
     price: 59.99,
     countInStock: 10,
-    rating: 4,
-    numReviews: 12,
   },
   {
     name: 'Join The Coolest Kids Club!',
@@ -131,8 +115,6 @@ const events = [
     category: 'Kids Event',
     price: 34.99,
     countInStock: 2,
-    rating: 4,
-    numReviews: 12,
   },
   {
     name: 'Coffee Bewering Masterclass',
@@ -146,8 +128,6 @@ const events = [
     category: 'Food & Drink',
     price: 17.99,
     countInStock: 5,
-    rating: 4,
-    numReviews: 12,
   },
   {
     name: 'Storytime on The Green with Barnes & Noble',
@@ -161,8 +141,6 @@ const events = [
     category: 'Kids Event',
     price: 9.99,
     countInStock: 2,
-    rating: 4,
-    numReviews: 12,
   },
 ]
 
