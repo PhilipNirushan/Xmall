@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Header from './Components/Navbar/Header'
-// import Footer from './Components/Footer/Footer'
+import Footer from './Components/Footer/Footer'
 import RegisterScreen from './Screens/RegisterScreen'
 import ProfileScreen from './Screens/ProfileScreen'
 import LoginScreen from './Screens/LoginScreen'
@@ -51,7 +51,7 @@ function App() {
         <Route path='/admin/eventlist' component={EventListScreen} />
         <Route path='/admin/event/:id/edit' component={EventEditScreen} />
         <Route path='/admin/bookinglist' component={BookingListScreen} />
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </Router>
   )
