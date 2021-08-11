@@ -7,7 +7,6 @@ import ProfileScreen from './Screens/ProfileScreen'
 import LoginScreen from './Screens/LoginScreen'
 import ShopScreen from './Screens/ShopScreen'
 import EachShopScreen from './Screens/EachShopScreen'
-import ContactScreen from './Screens/ContactScreen'
 import Home from './Screens/HomeScreen/Home'
 import AboutScreen from './Screens/AboutScreen'
 import EventScreen from './Screens/EventScreen'
@@ -34,7 +33,6 @@ function App() {
         <Route path='/shops' component={ShopScreen} exact />
         <Route path='/search/:keyword' component={ShopScreen} />
         <Route path='/shops/:id' component={EachShopScreen} />
-        <Route path='/contact' component={ContactScreen} exact />
         <Route path='/login' component={LoginScreen} />
         <Route path='/register' component={RegisterScreen} />
         <Route path='/profile' component={ProfileScreen} />
