@@ -12,7 +12,7 @@ import {
   Button,
 } from 'react-bootstrap'
 import { listEventDetails } from '../actions/eventActions'
-import Rating from '../Components/Rating'
+// import Rating from '../Components/Rating'
 import Loader from '../Components/Loader'
 import Message from '../Components/Message'
 import styled from 'styled-components'
@@ -107,12 +107,12 @@ const EachEventScreen = ({ history, match }) => {
                   <p className='mb-3'>
                     <EventName>{event.name}</EventName>
                   </p>
-                  <p className='mb-3'>
+                  {/* <p className='mb-3'>
                     <Rating
                       value={event.rating}
                       text={`${event.numReviews} reviews`}
                     />
-                  </p>
+                  </p> */}
 
                   <p className='mb-3'>
                     <FontRegular>{event.description}</FontRegular>
