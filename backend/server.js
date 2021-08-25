@@ -1,7 +1,7 @@
 import path from 'path'
 import express from 'express'
 import dotenv from 'dotenv'
-import colors from 'colors'
+// import colors from 'colors'
 import morgan from 'morgan'
 import connectDB from './config/db.js'
 
@@ -10,6 +10,7 @@ import shopRoutes from './routes/shopRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import bookingRoutes from './routes/bookingRoutes.js'
 import uploadRoutes from './routes/uploadRoutes.js'
+import dialogflowRoutes from './routes/dialogFlowRoutes.js'
 
 import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 
@@ -28,6 +29,8 @@ app.use(express.json())
 app.get('/', (req, res) => {
   res.send('API is running')
 })
+
+app.use('/api/dialogflow', dialogflowRoutes)
 
 app.use('/api/events', eventRoutes)
 
@@ -53,7 +56,5 @@ const PORT = process.env.PORT || 5000
 
 app.listen(
   PORT,
-  console.log(
-    `Server running in ${process.env.NODE_ENV} port ${PORT}`.yellow.bold
-  )
+  console.log(`Server running in ${process.env.NODE_ENV} port ${PORT}`)
 )

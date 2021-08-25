@@ -22,6 +22,8 @@ import EventListScreen from './Screens/EventListScreen'
 import ShopEditScreen from './Screens/ShopEditScreen'
 import EventEditScreen from './Screens/EventEditScreen'
 import BookingListScreen from './Screens/BookingListScreen'
+import Chatbot from './Components/Chatbot/Chatbot'
+import Rough from './Screens/HomeScreen/Rough'
 
 function App() {
   return (
@@ -49,6 +51,8 @@ function App() {
         <Route path='/admin/eventlist' component={EventListScreen} />
         <Route path='/admin/event/:id/edit' component={EventEditScreen} />
         <Route path='/admin/bookinglist' component={BookingListScreen} />
+        <Route path='/rough' component={Rough} />
+        <Chatbot />
         <Footer />
       </div>
     </Router>
