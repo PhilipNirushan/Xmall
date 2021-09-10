@@ -497,6 +497,12 @@ class Chatbot extends Component {
               </li>
             </ul>
           </div>
+          <div
+            ref={el => {
+              this.messagesEnd = el
+            }}
+            style={{ float: 'left', clear: 'both' }}
+          ></div>
         </div>
       )
     }
