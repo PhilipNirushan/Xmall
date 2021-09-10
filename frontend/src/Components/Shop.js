@@ -26,9 +26,6 @@ const Shop = ({ shop }) => {
             <Rating value={shop.rating} text={`${shop.numReviews} reviews`} />
           </>
         </Card.Text>
-        {/* <Card.Text as='div'>
-          <Button className='btn1'>Details</Button>
-        </Card.Text> */}
       </Card.Body>
     </Card>
   )

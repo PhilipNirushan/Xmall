@@ -9,21 +9,6 @@ import { register } from '../actions/userActions'
 
 /* Styling Begins */
 
-// const Title = styled.div`
-//   font-size: 25px;
-//   font-weight: 500;
-//   position: relative;
-//   ::before {
-//     content: '';
-//     position: absolute;
-//     left: 0;
-//     bottom: 0;
-//     height: 3px;
-//     width: 30px;
-//     background: #9b59b5;
-//   }
-// `
-
 const RegisterTitle = styled.div`
   font-size: 2rem;
   font-weight: 700;

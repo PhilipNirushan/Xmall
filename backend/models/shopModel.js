@@ -66,18 +66,6 @@ const shopSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    offerName: {
-      type: String,
-    },
-    offerDescription: {
-      type: String,
-    },
-    offerStartDate: {
-      type: String,
-    },
-    offerEndDate: {
-      type: String,
-    },
   },
   {
     timestamps: true,

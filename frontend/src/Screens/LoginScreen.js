@@ -44,10 +44,10 @@ const LoginScreen = ({ location, history }) => {
   }
 
   return (
-    <div className='my-4 my-5'>
+    <div className='my-5'>
       <Container>
         <Row className='justify-content-md-center '>
-          <Col xs={12} md={7} lg={5} className='px-5 pt-5 mb-3'>
+          <Col xs={12} md={7} lg={5} className='px-5 pt-5 mb-5 mt-5'>
             <div>
               <LoginTitle className='animate__animated animate__pulse'>{`Welcome Back :)`}</LoginTitle>
               <span>

@@ -24,10 +24,6 @@ const ShopEditScreen = ({ match, history }) => {
   const [location, setLocation] = useState('')
   const [phone, setPhone] = useState('')
   const [website, setWebsite] = useState('')
-  const [offerName, setOfferName] = useState('')
-  const [offerDescription, setOfferDescription] = useState('')
-  const [offerStartDate, setOfferStartDate] = useState('')
-  const [offerEndDate, setOfferEndDate] = useState('')
   const [uploading, setUploading] = useState(false)
 
   const dispatch = useDispatch()
@@ -58,10 +54,6 @@ const ShopEditScreen = ({ match, history }) => {
         setLocation(shop.location)
         setPhone(shop.phone)
         setWebsite(shop.website)
-        setOfferName(shop.offerName)
-        setOfferDescription(shop.offerDescription)
-        setOfferStartDate(shop.offerStartDate)
-        setOfferEndDate(shop.offerEndDate)
       }
     }
   }, [dispatch, history, shopId, shop, successUpdate])
@@ -102,10 +94,6 @@ const ShopEditScreen = ({ match, history }) => {
         location,
         phone,
         website,
-        offerName,
-        offerDescription,
-        offerStartDate,
-        offerEndDate,
       })
     )
   }
@@ -228,54 +216,6 @@ const ShopEditScreen = ({ match, history }) => {
                     value={website}
                     onChange={e => {
                       setWebsite(e.target.value)
-                    }}
-                  ></Form.Control>
-                </Form.Group>
-
-                <Form.Group controlId='offername'>
-                  <Form.Label>Offer Name</Form.Label>
-                  <Form.Control
-                    type='text'
-                    placeholder='Enter Offer Name'
-                    value={offerName}
-                    onChange={e => {
-                      setOfferName(e.target.value)
-                    }}
-                  ></Form.Control>
-                </Form.Group>
-
-                <Form.Group controlId='offerdescription'>
-                  <Form.Label>Offer Description</Form.Label>
-                  <Form.Control
-                    type='text'
-                    placeholder='Enter Offer Description'
-                    value={offerDescription}
-                    onChange={e => {
-                      setOfferDescription(e.target.value)
-                    }}
-                  ></Form.Control>
-                </Form.Group>
-
-                <Form.Group controlId='offerstartdate'>
-                  <Form.Label>Offer Start Time</Form.Label>
-                  <Form.Control
-                    type='text'
-                    placeholder='Enter Offer Start Date'
-                    value={offerStartDate}
-                    onChange={e => {
-                      setOfferStartDate(e.target.value)
-                    }}
-                  ></Form.Control>
-                </Form.Group>
-
-                <Form.Group controlId='offerenddate'>
-                  <Form.Label>Offer End Date</Form.Label>
-                  <Form.Control
-                    type='text'
-                    placeholder='Enter Offer End Date'
-                    value={offerEndDate}
-                    onChange={e => {
-                      setOfferEndDate(e.target.value)
                     }}
                   ></Form.Control>
                 </Form.Group>
