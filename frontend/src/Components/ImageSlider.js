@@ -13,8 +13,8 @@ const ImageSlider = () => {
           fluid
         />
         <Carousel.Caption className='carousel-text'>
-          <h3>First slide </h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3>Welcome to Xmall </h3>
+          {/* <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
         </Carousel.Caption>
       </Carousel.Item>
 

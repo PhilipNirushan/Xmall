@@ -21,6 +21,9 @@ import {
   SHOP_TOP_REQUEST,
   SHOP_TOP_SUCCESS,
   SHOP_TOP_FAIL,
+  // SHOP_USERID_REQUEST,
+  // SHOP_USERID_SUCCESS,
+  // SHOP_USERID_FAIL,
 } from '../constants/shopConstants'
 
 export const listShops =
@@ -66,6 +69,27 @@ export const listShopDetails = id => async dispatch => {
     })
   }
 }
+
+// export const listShopDetailsByUserId = () => async dispatch => {
+//   try {
+//     dispatch({ type: SHOP_USERID_REQUEST })
+
+//     const { data } = await axios.get(`/api/shopsuserid`)
+
+//     dispatch({
+//       type: SHOP_USERID_SUCCESS,
+//       payload: data,
+//     })
+//   } catch (error) {
+//     dispatch({
+//       type: SHOP_USERID_FAIL,
+//       payload:
+//         error.response && error.response.data.message
+//           ? error.response.data.message
+//           : error.message,
+//     })
+//   }
+// }
 
 export const deleteShop = id => async (dispatch, getState) => {
   try {

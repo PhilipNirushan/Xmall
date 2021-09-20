@@ -11,10 +11,6 @@ const getShops = asyncHandler(async (req, res) => {
           $regex: req.query.keyword,
           $options: 'i',
         },
-        // category: {
-        //   $regex: req.query.keyword,
-        //   $options: 'i',
-        // },
       }
     : {}
 
@@ -35,6 +31,19 @@ const getShopById = asyncHandler(async (req, res) => {
     throw new Error('Shop not found')
   }
 })
+
+// // @desc  Fetch single shop
+// // @route GET/api/shops/:id
+// // @access Public
+// const getShopByUserId = asyncHandler(async (req, res) => {
+//   const shop = await Shop.findAll()
+//   if (shop) {
+//     res.json(shop)
+//   } else {
+//     res.status(404)
+//     throw new Error('Shop not found')
+//   }
+// })
 
 // @desc  Delete a shop
 // @route DELETE /api/shops/:id

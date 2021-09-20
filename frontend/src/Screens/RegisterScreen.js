@@ -153,7 +153,7 @@ const RegisterScreen = ({ location, history }) => {
                   <Col>
                     <RegisterButton>
                       <Button type='submit' className='btn1'>
-                        Register
+                        Sign Up
                       </Button>
                     </RegisterButton>
                   </Col>
@@ -167,7 +167,7 @@ const RegisterScreen = ({ location, history }) => {
                   <Link
                     to={redirect ? `/login?redirect=${redirect}` : '/login'}
                   >
-                    Login
+                    Sign In
                   </Link>
                 </AccountLink>
               </Col>

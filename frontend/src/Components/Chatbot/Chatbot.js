@@ -410,7 +410,7 @@ class Chatbot extends Component {
                   onClick={this.hide}
                   style={{ color: 'white' }}
                 >
-                  Close
+                  <i class='fas fa-times'></i>
                 </StyledLink>
               </li>
             </ul>
@@ -492,7 +492,7 @@ class Chatbot extends Component {
                   onClick={this.show}
                   style={{ color: 'white' }}
                 >
-                  Show
+                  <i class='fas fa-caret-up'></i>
                 </StyledLink>
               </li>
             </ul>

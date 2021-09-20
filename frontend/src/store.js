@@ -9,6 +9,7 @@ import {
   shopUpdateReducer,
   shopReviewCreateReducer,
   shopTopRatedReducer,
+  // shopListByUserIdReducer,
 } from './reducers/shopReducer'
 import {
   eventListReducer,
@@ -44,6 +45,7 @@ const reducer = combineReducers({
   shopUpdate: shopUpdateReducer,
   shopReviewCreate: shopReviewCreateReducer,
   shopTopRated: shopTopRatedReducer,
+  // shopListByUserId: shopListByUserIdReducer,
   eventList: eventListReducer,
   eventDetails: eventDetailsReducer,
   eventDelete: eventDeleteReducer,

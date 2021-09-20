@@ -98,7 +98,7 @@ const LoginScreen = ({ location, history }) => {
                 <Link
                   to={redirect ? `/register?redirect=${redirect}` : '/register'}
                 >
-                  Register
+                  Sign Up
                 </Link>
               </Col>
             </Row>
